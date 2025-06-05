@@ -1,21 +1,25 @@
 'use client'
 
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import XIcon from '@mui/icons-material/X';
-import GoogleIcon from '@mui/icons-material/Google';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import { useState } from "react";
-import { Box, Button, TextField, Typography, Grid, Link, Hidden } from "@mui/material";
-import SendIcon from '@mui/icons-material/Send';
-import { useRouter } from "next/navigation";
-import { toast, ToastContainer } from 'react-toastify';
+import './globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 
+import XIcon from '@mui/icons-material/X';
+import SendIcon from '@mui/icons-material/Send';
+import GoogleIcon from '@mui/icons-material/Google';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from 'react-toastify';
+import { Box, Button, TextField, Typography, Grid, Link } from "@mui/material";
+
 const Login = () => {
-    const [usuario, setUsuario] = useState('');
-    const [senha, setSenha] = useState('');
     const router = useRouter();
+    
+    const [senha, setSenha] = useState('');
+    const [usuario, setUsuario] = useState('');
 
     const goToHome = () => {
         if (usuario === 'bruno' && senha === 'admin') {
@@ -33,17 +37,14 @@ const Login = () => {
         <>
             <Box
                 sx={{
-                    minHeight: '100vh',
-                    width: '100vw',
                     display: 'flex',
-                    justifyContent: 'center',
+                    minWidth: '100vw',
+                    minHeight: '100vh',
                     alignItems: 'center',
-                    backgroundImage: 'url("/FundoLogin.png")',
                     backgroundSize: 'cover',
+                    justifyContent: 'center',
                     backgroundPosition: 'center',
-                    m: 0,
-                    p: 0, // padding zero!
-
+                    backgroundImage: 'url("/FundoLogin.png")',
                 }}
             >
 
@@ -58,8 +59,8 @@ const Login = () => {
                                 width: '100%',
                                 maxWidth: 400,
                                 height: 'auto',
+                                margin: '0 auto',
                                 display: { xs: 'none', md: 'block' },
-                                margin: '0 auto'
                             }}
                         />
                     </Grid>
@@ -71,11 +72,11 @@ const Login = () => {
                             spacing={3}
                             sx={{
                                 p: 4,
-                                borderRadius: 3,
-                                background: 'rgba(54, 116, 181, 1)',
                                 boxShadow: 4,
-                                marginLeft: { xs: '50px', md: '0px' },
+                                borderRadius: 3,
                                 width: { md: '80%', xs: '400px' },
+                                marginLeft: { xs: '50px', md: '0px' },
+                                background: 'rgba(54, 116, 181, 1)',
                             }}
                         >
                             <Grid item xs={12}>
@@ -101,10 +102,10 @@ const Login = () => {
 
                             <Grid item xs={12}>
                                 <TextField
-                                    placeholder="Insira sua Senha"
-                                    type="password"
                                     fullWidth
                                     value={senha}
+                                    type="password"
+                                    placeholder="Insira sua Senha"
                                     onChange={(e) => setSenha(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
@@ -117,11 +118,11 @@ const Login = () => {
 
                             <Grid item xs={12}>
                                 <Button
-                                    onClick={goToHome}
                                     fullWidth
+                                    color="success"
+                                    onClick={goToHome}
                                     variant="contained"
                                     endIcon={<SendIcon />}
-                                    color="success"
                                     sx={{ height: 45, borderRadius: "10px" }}
                                 >
                                     Login

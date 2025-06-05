@@ -84,7 +84,7 @@
 a.primary {
   background: var(--foreground);
   color: var(--background);
-  gap: 8px;
+  
 }
 
 a.secondary {
@@ -101,7 +101,7 @@ a.secondary {
 .footer a {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 58px;
 }
 
 .footer img {
