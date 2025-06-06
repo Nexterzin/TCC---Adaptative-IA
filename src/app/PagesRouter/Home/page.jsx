@@ -1,14 +1,13 @@
-import UnauthorizedLogin from "@/app/Commons/Component/UnauthorizedLogin"
+'use client'
 
-const { default: Home } = require("@/app/Commons/Home/Home")
+import HomePage from "@/app/Commons/Home/Home"
 
-const HomePage = () => {
+const HomeRouter = () => {
     return (
         <>
-        <Home/>
-        {/* <UnauthorizedLogin/> */}
+        <HomePage />
         </>
     )
 }
 
-export default HomePage
+export default HomeRouter

@@ -13,11 +13,11 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
-import { Box, Button, TextField, Typography, Grid, Link } from "@mui/material";
+import { Box, Button, TextField, Typography, Grid, Link, Stack } from "@mui/material";
 
-const Login = () => {
+const LoginPage = () => {
     const router = useRouter();
-    
+
     const [senha, setSenha] = useState('');
     const [usuario, setUsuario] = useState('');
 
@@ -31,6 +31,10 @@ const Login = () => {
 
     const goToRegister = () => {
         router.push('/PagesRouter/Register');
+    };
+
+    const goToRecoveryPassword = () => {
+        router.push('/PagesRouter/Password-recovery');
     };
 
     return (
@@ -53,39 +57,43 @@ const Login = () => {
                     <Grid item xs={12} md={2}>
                         <Box
                             component="img"
-                            src="/MedicaLogin.svg"
+                            src="/loginDoctor.png"
                             alt="Imagem Médica"
                             sx={{
-                                width: '100%',
-                                maxWidth: 400,
+                                width: { md: '100%', lg: '190%' },
                                 height: 'auto',
-                                margin: '0 auto',
-                                display: { xs: 'none', md: 'block' },
+                                ml: { md: '50px', lg: '190px' },
+                                display: { xs: 'none', md: 'none', lg: 'block' },
                             }}
                         />
                     </Grid>
 
                     {/* Card de Login como Grid */}
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={8}>
                         <Grid
                             container
                             spacing={3}
                             sx={{
                                 p: 4,
-                                boxShadow: 4,
+                                boxShadow: 10
+
+                                ,
                                 borderRadius: 3,
-                                width: { md: '80%', xs: '400px' },
-                                marginLeft: { xs: '50px', md: '0px' },
+                                width: { md: '80%', xs: '400px', lg: '40%' },
+                                marginLeft: { xs: '50px', md: '60px', lg: '500px' },
                                 background: 'rgba(54, 116, 181, 1)',
                             }}
                         >
                             <Grid item xs={12}>
                                 <Typography variant="h4" textAlign="center" fontWeight="bold" color="white">
-                                    Logo
+                                    Entrar
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                    Insira seu e-mail
+                                </Stack>
                                 <TextField
                                     placeholder="Insira seu E-mail"
                                     fullWidth
@@ -94,13 +102,32 @@ const Login = () => {
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
-                                            backgroundColor: 'rgba(255, 255, 255, 0.87)',
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#000",
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
                                         },
                                     }}
                                 />
                             </Grid>
 
                             <Grid item xs={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                    Insira sua senha
+                                </Stack>
                                 <TextField
                                     fullWidth
                                     value={senha}
@@ -110,7 +137,23 @@ const Login = () => {
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
-                                            backgroundColor: 'rgba(255, 255, 255, 0.87)',
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#000",
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
                                         },
                                     }}
                                 />
@@ -119,31 +162,50 @@ const Login = () => {
                             <Grid item xs={12}>
                                 <Button
                                     fullWidth
-                                    color="success"
                                     onClick={goToHome}
                                     variant="contained"
-                                    endIcon={<SendIcon />}
-                                    sx={{ height: 45, borderRadius: "10px" }}
+                                    sx={{
+                                        height: 45,
+                                        borderRadius: "30px",
+                                        backgroundColor: '#fff',
+                                        color: 'rgba(0, 57, 110, 1)',
+                                        fontWeight: 'bold',
+                                        '&:hover': {
+                                            backgroundColor: 'rgba(8, 214, 111, 0.71)',
+                                        }
+                                    }}
                                 >
-                                    Login
+                                    Avançar
                                 </Button>
+
                             </Grid>
 
-                            <Grid item xs={12} textAlign="center">
-                                <Typography variant="body2" color="black">
-                                    Não tem uma conta?
-                                </Typography>
+                            <Stack direction={'row'} xs={12} justifyContent={'center'} pt={4} width={'100%'}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ fontWeight: 'bold' }}>
+                                    É novo por aqui?
+                                </Stack>
+                                <Stack pl={1}>
+                                    <Link
+                                        component="button"
+                                        onClick={goToRegister}
+                                        sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold' }}
+                                    >
+                                        Registre-se
+                                    </Link>
+                                </Stack>
+                            </Stack>
+
+                            <Stack width={'100%'} justifyContent={'center'} pt={2}>
                                 <Link
                                     component="button"
-                                    variant="h6"
-                                    onClick={goToRegister}
-                                    sx={{ color: 'blue', fontWeight: 'bold', mt: 1 }}
+                                    onClick={goToRecoveryPassword}
+                                    sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold' }}
                                 >
-                                    Registre-se
+                                    Esqueceu sua senha?
                                 </Link>
-                            </Grid>
+                            </Stack>
 
-                            <Grid item xs={12}>
+                            {/* <Grid item xs={12}>
                                 <Grid container spacing={2} justifyContent="center">
                                     {[FacebookIcon, InstagramIcon, GoogleIcon, XIcon, LinkedInIcon].map((Icon, index) => (
                                         <Grid item key={index}>
@@ -151,7 +213,7 @@ const Login = () => {
                                         </Grid>
                                     ))}
                                 </Grid>
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </Grid>
                 </Grid>
@@ -161,4 +223,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default LoginPage
