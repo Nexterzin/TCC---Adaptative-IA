@@ -1,11 +1,13 @@
-import Login from "@/app/page"
+'use client'
 
-const RoteLogin = () => {
-    return(
+import LoginPage from "@/app/page"
+
+const LoginRouter = () => {
+    return (
         <>
-        <Login/>
+            <LoginPage />
         </>
     )
 }
 
-export default RoteLogin
+export default LoginRouter
