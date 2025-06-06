@@ -1,9 +1,11 @@
-const { default: RegisterPage } = require("@/app/Commons/Register/RegisterPage")
+'use client'
+
+import RegisterPage from "@/app/Commons/Register/RegisterPage"
 
 const RegisterRouter = () => {
     return (
         <>
-        <RegisterPage/>
+        <RegisterPage />
         </>
     )
 }

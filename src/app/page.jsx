@@ -1,21 +1,25 @@
 'use client'
 
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import XIcon from '@mui/icons-material/X';
-import GoogleIcon from '@mui/icons-material/Google';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import { useState } from "react";
-import { Box, Button, Stack, TextField, Typography, Grid2, Link } from "@mui/material";
-import SendIcon from '@mui/icons-material/Send';
-import { useRouter } from "next/navigation";
-import { toast, ToastContainer } from 'react-toastify';
+import './globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
-    const [usuario, setUsuario] = useState('');
-    const [senha, setSenha] = useState('');
+import XIcon from '@mui/icons-material/X';
+import SendIcon from '@mui/icons-material/Send';
+import GoogleIcon from '@mui/icons-material/Google';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from 'react-toastify';
+import { Box, Button, TextField, Typography, Grid, Link, Stack } from "@mui/material";
+
+const LoginPage = () => {
     const router = useRouter();
+
+    const [senha, setSenha] = useState('');
+    const [usuario, setUsuario] = useState('');
 
     const goToHome = () => {
         if (usuario === 'bruno' && senha === 'admin') {
@@ -26,119 +30,197 @@ const Login = () => {
     };
 
     const goToRegister = () => {
-        router.push('/PagesRouter/Register')
-    }
+        router.push('/PagesRouter/Register');
+    };
+
+    const goToRecoveryPassword = () => {
+        router.push('/PagesRouter/Password-recovery');
+    };
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100vh',
-                backgroundImage: 'url("/FundoLogin.png")',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                gap: 1,
-            }}
-        >
+        <>
             <Box
-                component="img"
-                src="/MedicaLogin.svg"
-                alt="Imagem Médica"
                 sx={{
-                    width: 400,
-                    height: 'auto',
-                    display: { xs: 'none', md: 'block' },
-                }}
-            />
-
-            <Stack
-                sx={{
-                    width: 450,
-                    height: 550,
-                    background: 'rgba(54, 116, 181, 0.80)',
-                    border: 1,
-                    borderRadius: 3,
-                    marginRight: 50
+                    display: 'flex',
+                    minWidth: '100vw',
+                    minHeight: '100vh',
+                    alignItems: 'center',
+                    backgroundSize: 'cover',
+                    justifyContent: 'center',
+                    backgroundPosition: 'center',
+                    backgroundImage: 'url("/FundoLogin.png")',
                 }}
             >
-                <Typography variant="h2" textAlign={'center'} sx={{ fontWeight: 'bold', mt: 2, mb: 4 }}>
-                    LOGIN
-                </Typography>
-                <Grid2 container sx={{ p: 2 }}>
-                    <Grid2 size={12} sx={{ mb: 3 }}>
-                        <TextField
-                            placeholder="Insira seu E-mail"
-                            fullWidth
-                            value={usuario}
-                            onChange={(e) => setUsuario(e.target.value)}
+
+                <Grid container spacing={0} alignItems="center" justifyContent="center" marginRight={'100px'}>
+                    {/* Imagem */}
+                    <Grid item xs={12} md={2}>
+                        <Box
+                            component="img"
+                            src="/loginDoctor.png"
+                            alt="Imagem Médica"
                             sx={{
-                                "& .MuiOutlinedInput-root": {
-                                    borderRadius: "10px",
-                                    background: 'rgba(255, 255, 255, 0.87)',
-                                },
+                                width: { md: '100%', lg: '190%' },
+                                height: 'auto',
+                                ml: { md: '50px', lg: '190px' },
+                                display: { xs: 'none', md: 'none', lg: 'block' },
                             }}
                         />
-                    </Grid2>
-                    <Grid2 size={12}>
-                        <TextField
-                            placeholder="Insira sua Senha"
-                            fullWidth
-                            type="password"
-                            value={senha}
-                            onChange={(e) => setSenha(e.target.value)}
+                    </Grid>
+
+                    {/* Card de Login como Grid */}
+                    <Grid item xs={12} md={8}>
+                        <Grid
+                            container
+                            spacing={3}
                             sx={{
-                                "& .MuiOutlinedInput-root": {
-                                    borderRadius: "10px",
-                                    background: 'rgba(255, 255, 255, 0.87)',
-                                },
+                                p: 4,
+                                boxShadow: 10
+
+                                ,
+                                borderRadius: 3,
+                                width: { md: '80%', xs: '400px', lg: '40%' },
+                                marginLeft: { xs: '50px', md: '60px', lg: '500px' },
+                                background: 'rgba(54, 116, 181, 1)',
                             }}
-                        />
-                    </Grid2>
-                    <Grid2 size={12} sx={{ textAlign: 'center', mt: 5 }}>
-                        <Button
-                            onClick={goToHome}
-                            sx={{ width: 200, height: 45, borderRadius: "10px" }}
-                            variant="contained"
-                            endIcon={<SendIcon />}
-                            color="success"
                         >
-                            Login
-                        </Button>
-                    </Grid2>
-                    <Grid2 size={12} sx={{ textAlign: 'center', mt: 5 }}>
-                        <Typography>Não tem uma conta?</Typography>
-                        <Link sx={{ color: 'blue' }}
-                            component="button"
-                            variant="h6"
-                            onClick={goToRegister}
-                        >
-                            Registre-se
-                        </Link>
-                    </Grid2>
-                    <Grid2 container spacing={2} size={12} sx={{ mt: 3, justifyContent: 'center' }}>
-                        <Grid2>
-                            <FacebookIcon sx={{ fontSize: 40, cursor: 'pointer' }} />
-                        </Grid2>
-                        <Grid2>
-                            <InstagramIcon sx={{ fontSize: 40, cursor: 'pointer' }} />
-                        </Grid2>
-                        <Grid2>
-                            <GoogleIcon sx={{ fontSize: 40, cursor: 'pointer' }} />
-                        </Grid2>
-                        <Grid2>
-                            <XIcon sx={{ fontSize: 40, cursor: 'pointer' }} />
-                        </Grid2>
-                        <Grid2>
-                            <LinkedInIcon sx={{ fontSize: 40, cursor: 'pointer' }} />
-                        </Grid2>
-                    </Grid2>
-                </Grid2>
-            </Stack>
-            <ToastContainer />
-        </Box>
+                            <Grid item xs={12}>
+                                <Typography variant="h4" textAlign="center" fontWeight="bold" color="white">
+                                    Entrar
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                    Insira seu e-mail
+                                </Stack>
+                                <TextField
+                                    placeholder="Insira seu E-mail"
+                                    fullWidth
+                                    value={usuario}
+                                    onChange={(e) => setUsuario(e.target.value)}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "10px",
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#000",
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                    Insira sua senha
+                                </Stack>
+                                <TextField
+                                    fullWidth
+                                    value={senha}
+                                    type="password"
+                                    placeholder="Insira sua Senha"
+                                    onChange={(e) => setSenha(e.target.value)}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "10px",
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#000",
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                <Button
+                                    fullWidth
+                                    onClick={goToHome}
+                                    variant="contained"
+                                    sx={{
+                                        height: 45,
+                                        borderRadius: "30px",
+                                        backgroundColor: '#fff',
+                                        color: 'rgba(0, 57, 110, 1)',
+                                        fontWeight: 'bold',
+                                        '&:hover': {
+                                            backgroundColor: 'rgba(8, 214, 111, 0.71)',
+                                        }
+                                    }}
+                                >
+                                    Avançar
+                                </Button>
+
+                            </Grid>
+
+                            <Stack direction={'row'} xs={12} justifyContent={'center'} pt={4} width={'100%'}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ fontWeight: 'bold' }}>
+                                    É novo por aqui?
+                                </Stack>
+                                <Stack pl={1}>
+                                    <Link
+                                        component="button"
+                                        onClick={goToRegister}
+                                        sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold' }}
+                                    >
+                                        Registre-se
+                                    </Link>
+                                </Stack>
+                            </Stack>
+
+                            <Stack width={'100%'} justifyContent={'center'} pt={2}>
+                                <Link
+                                    component="button"
+                                    onClick={goToRecoveryPassword}
+                                    sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold' }}
+                                >
+                                    Esqueceu sua senha?
+                                </Link>
+                            </Stack>
+
+                            {/* <Grid item xs={12}>
+                                <Grid container spacing={2} justifyContent="center">
+                                    {[FacebookIcon, InstagramIcon, GoogleIcon, XIcon, LinkedInIcon].map((Icon, index) => (
+                                        <Grid item key={index}>
+                                            <Icon sx={{ fontSize: 40, cursor: 'pointer', color: 'black' }} />
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </Grid> */}
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <ToastContainer />
+            </Box>
+        </>
     );
 }
 
-export default Login;
+export default LoginPage

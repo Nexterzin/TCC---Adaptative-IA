@@ -1,11 +1,13 @@
-const { default: Home } = require("@/app/Commons/Home/Home")
+'use client'
 
-const HomePage = () => {
+import HomePage from "@/app/Commons/Home/Home"
+
+const HomeRouter = () => {
     return (
         <>
-        <Home/>
+        <HomePage />
         </>
     )
 }
 
-export default HomePage
+export default HomeRouter
