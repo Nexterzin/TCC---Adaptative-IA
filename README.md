@@ -1,4 +1,4 @@
-<h1 style="color: #007acc; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+**<h1 style="color: #007acc; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   Diabetes Prediction with Machine Learning
 </h1>
 
@@ -51,6 +51,72 @@
 <h2 style="color: #444; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🤝 How to Contribute</h2>
 <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; line-height: 1.6;">
   Feel free to explore the code, open issues, or suggest improvements. This is an academic project with great potential for evolution, and your collaboration is welcome!
+</p>**<h1 style="color: #10b981; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 3em; margin-top: 20px;">
+  🔬 Predição de Diabetes com Machine Learning
+</h1>
+
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1f2937; font-size: 1.1em; line-height: 1.8; margin: 20px 0;">
+  Seja bem-vindo ao repositório do meu <strong style="color: #f97316;">Trabalho de Conclusão de Curso (TCC)</strong>! 💡
+  <br><br>
+  Este sistema web foi desenvolvido com foco em <strong>predição de diabetes</strong> a partir de dados médicos, utilizando <strong style="color: #3b82f6;">Machine Learning</strong>. Ele une uma interface moderna, responsiva e intuitiva com uma estrutura técnica de ponta, mostrando como a tecnologia pode fazer diferença na área da saúde. ❤️‍🩹
+</p>
+
+<h2 style="color: #2563eb; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">📌 Visão Geral</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #374151; font-size: 1em; line-height: 1.7;">
+  Criado com <strong>Next.js</strong>, esse projeto utiliza renderização do lado do servidor pra performance topzera 🚀.
+  <br>
+  O sistema conta com:
+  <ul style="list-style: '🔥 '; padding-left: 25px; color: #111827;">
+    <li>Temas claro e escuro</li>
+    <li>Componentes reutilizáveis</li>
+    <li>Animações suaves que dão vida à interface</li>
+    <li>Login seguro e upload de laudos médicos</li>
+    <li>Simulação de predição com IA</li>
+  </ul>
+</p>
+
+<h2 style="color: #9333ea; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">✨ Funcionalidades Principais</h2>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #111827; font-size: 1em; line-height: 1.7;">
+  <li><strong>🔐 Autenticação:</strong> Sistema de login moderno com recuperação de senha e cadastro.</li>
+  <li><strong>📄 Upload de Laudos:</strong> Interface amigável com feedback visual e carregamento animado.</li>
+  <li><strong>🤖 Simulação de Predição:</strong> Resultados simulados com explicação dos tipos de diabetes.</li>
+  <li><strong>📱 Design Responsivo:</strong> Funciona lindamente no celular, tablet e PC.</li>
+  <li><strong>🎉 Feedback Visual:</strong> Notificações show com React Toastify e animações suaves.</li>
+</ul>
+
+<h2 style="color: #e11d48; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🧩 Estrutura do Projeto</h2>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1f2937; font-size: 1em; line-height: 1.7;">
+  <li><code style="color: #2563eb;">globals.css</code>: Estilos globais, variáveis e animações do carregador.</li>
+  <li><code style="color: #2563eb;">layout.js</code>: Layout base com fonte Poppins e metadados.</li>
+  <li><code style="color: #2563eb;">page.jsx (LoginPage)</code>: Tela de login com Material-UI.</li>
+  <li><code style="color: #2563eb;">page.module.css</code>: Estilização modular e responsiva.</li>
+  <li><code style="color: #2563eb;">DefaultButton.jsx</code>: Componente de botão reutilizável e personalizável.</li>
+  <li><code style="color: #2563eb;">Home.jsx</code>: Página de upload de laudos e exibição dos resultados.</li>
+  <li><code style="color: #2563eb;">LoginRouter / HomeRouter</code>: Roteamento entre páginas.</li>
+</ul>
+
+<h2 style="color: #0ea5e9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">⚙️ Tecnologias Utilizadas</h2>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
+  <li><strong>Next.js</strong> – Framework React com SSR eficiente</li>
+  <li><strong>React</strong> – Interface reativa e dinâmica</li>
+  <li><strong>Material-UI (MUI)</strong> – Componentes estilosos e padronizados</li>
+  <li><strong>CSS Modules</strong> – Estilos encapsulados por componente</li>
+  <li><strong>React Toastify</strong> – Notificações modernas e interativas</li>
+</ul>
+
+<h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🎯 Objetivo e Futuro</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  O projeto serve como uma <strong>prova de conceito</strong> para a integração entre tecnologia e saúde. Futuramente, a ideia é:
+  <ul style="list-style: '📈 '; padding-left: 25px; color: #1e293b;">
+    <li>Integrar modelos de Machine Learning reais</li>
+    <li>Conectar com APIs médicas</li>
+    <li>Transformar em uma ferramenta realmente útil pra clínicas e médicos</li>
+  </ul>
+</p>
+
+<h2 style="color: #10b981; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🤝 Como Contribuir</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
+  Curtiu o projeto? Dá uma olhada no código, abre uma <code>issue</code>, manda um <code>pull request</code> ou só deixa um ⭐ aí! Toda contribuição é bem-vinda. 🙌
 </p>
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
