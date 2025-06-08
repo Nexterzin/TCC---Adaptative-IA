@@ -1,88 +1,4 @@
-<style>
-  /* Fonte Poppins importada do Google Fonts */
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f9f9fb;
-    color: #222;
-    line-height: 1.6;
-    padding: 2rem;
-    max-width: 900px;
-    margin: auto;
-  }
-
-  h1, h2 {
-    color: #2c3e50;
-    font-weight: 600;
-  }
-
-  h1 {
-    font-size: 2.8rem;
-    margin-bottom: 0.2rem;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 0.3rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #2980b9;
-    padding-bottom: 0.25rem;
-  }
-
-  p {
-    font-size: 1rem;
-    color: #444;
-    margin-bottom: 1rem;
-  }
-
-  ul {
-    list-style-type: disc;
-    margin-left: 1.5rem;
-    color: #333;
-  }
-
-  ul li {
-    margin-bottom: 0.7rem;
-  }
-
-  /* Cards para funcionalidade e estrutura */
-  .card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    padding: 1rem 1.5rem;
-    margin-bottom: 1.8rem;
-    transition: box-shadow 0.3s ease;
-  }
-  .card:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-  }
-
-  /* Destaque para títulos dentro dos cards */
-  .card h3 {
-    margin-top: 0;
-    color: #34495e;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-  }
-
-  /* Links em azul suave */
-  a {
-    color: #2980b9;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  /* Container geral para facilitar responsividade */
-  .container {
-    padding: 0 1rem;
-  }
-</style>
 
 <div class="container">
   <h1>Predição de Diabetes com Machine Learning</h1>
@@ -133,3 +49,51 @@
   <h2>Como Contribuir</h2>
   <p>Sinta-se à vontade para explorar o código, abrir issues ou sugerir melhorias. Este é um projeto acadêmico com grande potencial de evolução, e sua colaboração é bem-vinda!</p>
 </div>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto;">
+  <h1 style="color: #007acc; text-align: center;">Diabetes Prediction with Machine Learning</h1>
+
+  <p>Welcome to the repository of my <strong>Final Course Project (FCP)</strong>, an innovative web system designed to predict the type of diabetes based on medical data, using Machine Learning techniques. This project combines a modern and responsive user interface with a robust technical architecture, demonstrating the potential of technology in the healthcare field.</p>
+
+  <h2 style="color: #444;">🔍 Overview</h2>
+  <p>This application was developed with <strong>Next.js</strong>, leveraging server-side rendering to provide optimized performance and a smooth experience. The styling uses modern CSS with support for light and dark themes, while reusable components and custom animations enhance user interaction.</p>
+  <p>The system includes secure authentication, medical report uploads, and a diabetes prediction simulation, serving as a proof of concept for Machine Learning-based solutions.</p>
+
+  <h2 style="color: #444;">🚀 Main Features</h2>
+  <ul>
+    <li><strong>User Authentication:</strong> Simple and effective login system, with navigation to registration and password recovery.</li>
+    <li><strong>Report Upload and Analysis:</strong> Intuitive interface for submitting medical data, with visual feedback through an animated loader.</li>
+    <li><strong>Prediction Simulation:</strong> Mock results illustrating different types of diabetes, accompanied by detailed descriptions.</li>
+    <li><strong>Responsive Design:</strong> Adaptable styles ensure usability on devices of various sizes.</li>
+    <li><strong>Visual Feedback:</strong> Elegant animations and notifications with React Toastify for an interactive experience.</li>
+  </ul>
+
+  <h2 style="color: #444;">📁 Project Structure</h2>
+  <ul>
+    <li><code>globals.css</code>: Defines global styles, CSS variables for themes, and sophisticated animations for the loader.</li>
+    <li><code>layout.js</code>: Configures the Poppins font and metadata, serving as the base for the application layout.</li>
+    <li><code>page.jsx</code> (LoginPage): Implements authentication with Material-UI components, providing a consistent and user-friendly interface.</li>
+    <li><code>page.module.css</code>: Modular styles for the main page, optimized for different color schemes and devices.</li>
+    <li><code>DefaultButton.jsx</code>: Reusable button component, customizable via props for design flexibility.</li>
+    <li><code>Home.jsx</code>: Central page for report uploads and display of simulated results, with integrated animations.</li>
+    <li><code>page.jsx</code> (LoginRouter and HomeRouter): Manages routing to the login and home pages.</li>
+  </ul>
+
+  <h2 style="color: #444;">🛠 Technologies Used</h2>
+  <ul>
+    <li><strong>Next.js:</strong> React framework for efficient rendering and dynamic routing.</li>
+    <li><strong>React:</strong> Main library for building reactive interfaces.</li>
+    <li><strong>Material-UI (MUI):</strong> Styled components that ensure visual consistency.</li>
+    <li><strong>CSS Modules:</strong> Local scope of styles for simplified maintenance.</li>
+    <li><strong>React Toastify:</strong> Elegant notifications that enrich user interaction.</li>
+  </ul>
+
+  <h2 style="color: #444;">🎯 Objective and Future</h2>
+  <p>This project is a demonstration of the potential integration between technology and healthcare, serving as a foundation for real diabetes prediction solutions. Future expansions may include the implementation of trained Machine Learning models and integration with medical data APIs, enhancing its practical applicability.</p>
+
+  <h2 style="color: #444;">🤝 How to Contribute</h2>
+  <p>Feel free to explore the code, open issues, or suggest improvements. This is an academic project with great potential for evolution, and your collaboration is welcome!</p>
+</div>
+
