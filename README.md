@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Predição de Diabetes com Machine Learning
 
-## Getting Started
+Bem-vindo ao repositório do meu Trabalho de Conclusão de Curso (TCC), um sistema web inovador projetado para prever o tipo de diabetes com base em dados médicos, utilizando técnicas de Machine Learning. Este projeto combina uma interface de usuário moderna e responsiva com uma arquitetura técnica robusta, demonstrando o potencial da tecnologia na área da saúde.
 
-First, run the development server:
+Visão Geral
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Esta aplicação foi desenvolvida com Next.js, aproveitando a renderização do lado do servidor para oferecer desempenho otimizado e uma experiência fluida. A estilização utiliza CSS moderno com suporte a temas claro e escuro, enquanto componentes reutilizáveis e animações personalizadas elevam a interação do usuário. O sistema inclui autenticação segura, upload de laudos médicos e uma simulação de predição de diabetes, servindo como prova de conceito para soluções baseadas em Machine Learning.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Funcionalidades Principais
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Autenticação de Usuários: Sistema de login simples e eficaz, com navegação para registro e recuperação de senha.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Upload e Análise de Laudos: Interface intuitiva para envio de dados médicos, com feedback visual por meio de um loader animado.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+Simulação de Predição: Resultados mock que ilustram diferentes tipos de diabetes, acompanhados de descrições detalhadas.
+
+
+
+Design Responsivo: Estilos adaptáveis garantem usabilidade em dispositivos de diversos tamanhos.
+
+
+
+Feedback Visual: Animações elegantes e notificações com React Toastify para uma experiência interativa.
+
+Estrutura do Projeto
+
+
+
+
+
+globals.css: Define estilos globais, variáveis CSS para temas e animações sofisticadas para o loader.
+
+
+
+layout.js: Configura a fonte Poppins e os metadados, servindo como base para o layout da aplicação.
+
+
+
+page.jsx (LoginPage): Implementa a autenticação com componentes Material-UI, oferecendo uma interface consistente e amigável.
+
+
+
+page.module.css: Estilos modulares para a página principal, otimizados para diferentes esquemas de cores e dispositivos.
+
+
+
+DefaultButton.jsx: Componente de botão reutilizável, personalizável via props para flexibilidade no design.
+
+
+
+Home.jsx: Página central para upload de laudos e exibição de resultados simulados, com animações integradas.
+
+
+
+page.jsx (LoginRouter e HomeRouter): Gerencia o roteamento para as páginas de login e home.
+
+Tecnologias Utilizadas
+
+
+
+
+
+Next.js: Framework React para renderização eficiente e roteamento dinâmico.
+
+
+
+React: Biblioteca principal para construção de interfaces reativas.
+
+
+
+Material-UI (MUI): Componentes estilizados que asseguram consistência visual.
+
+
+
+CSS Modules: Escopo local de estilos para manutenção simplificada.
+
+
+
+React Toastify: Notificações elegantes que enriquecem a interação com o usuário.
+
+Objetivo e Futuro
+
+Este projeto é uma demonstração do potencial de integração entre tecnologia e saúde, servindo como base para soluções reais de predição de diabetes. Futuras expansões podem incluir a implementação de modelos de Machine Learning treinados e a integração com APIs de dados médicos, ampliando sua aplicabilidade prática.
+
+Como Contribuir
+
+Sinta-se à vontade para explorar o código, abrir issues ou sugerir melhorias. Este é um projeto acadêmico com grande potencial de evolução, e sua colaboração é bem-vinda!
