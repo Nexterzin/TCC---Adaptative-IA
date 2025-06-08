@@ -13,7 +13,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
-import { Box, Button, TextField, Typography, Grid, Link, Stack } from "@mui/material";
+import { Box, TextField, Typography, Grid, Link, Stack } from "@mui/material";
+import DefaultaButton from './Commons/Component/ComponentButton/DefaultButton';
 
 const LoginPage = () => {
     const router = useRouter();
@@ -57,12 +58,12 @@ const LoginPage = () => {
                     <Grid item xs={12} md={2}>
                         <Box
                             component="img"
-                            src="/loginDoctor.png"
                             alt="Imagem Médica"
+                            src="/loginDoctor.png"
                             sx={{
-                                width: { md: '100%', lg: '190%' },
                                 height: 'auto',
                                 ml: { md: '50px', lg: '190px' },
+                                width: { md: '100%', lg: '190%' },
                                 display: { xs: 'none', md: 'none', lg: 'block' },
                             }}
                         />
@@ -75,13 +76,11 @@ const LoginPage = () => {
                             spacing={3}
                             sx={{
                                 p: 4,
-                                boxShadow: 10
-
-                                ,
+                                boxShadow: 10,
                                 borderRadius: 3,
+                                background: 'rgba(54, 116, 181, 1)',
                                 width: { md: '80%', xs: '400px', lg: '40%' },
                                 marginLeft: { xs: '50px', md: '60px', lg: '500px' },
-                                background: 'rgba(54, 116, 181, 1)',
                             }}
                         >
                             <Grid item xs={12}>
@@ -95,9 +94,9 @@ const LoginPage = () => {
                                     Insira seu e-mail
                                 </Stack>
                                 <TextField
-                                    placeholder="Insira seu E-mail"
                                     fullWidth
                                     value={usuario}
+                                    placeholder="Insira seu E-mail"
                                     onChange={(e) => setUsuario(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
@@ -134,6 +133,11 @@ const LoginPage = () => {
                                     type="password"
                                     placeholder="Insira sua Senha"
                                     onChange={(e) => setSenha(e.target.value)}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') {
+                                            goToHome();
+                                        }
+                                    }}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
@@ -159,29 +163,17 @@ const LoginPage = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12}>
-                                <Button
-                                    fullWidth
+                            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <DefaultaButton
+                                    height={45}
                                     onClick={goToHome}
-                                    variant="contained"
-                                    sx={{
-                                        height: 45,
-                                        borderRadius: "30px",
-                                        backgroundColor: '#fff',
-                                        color: 'rgba(0, 57, 110, 1)',
-                                        fontWeight: 'bold',
-                                        '&:hover': {
-                                            backgroundColor: 'rgba(8, 214, 111, 0.71)',
-                                        }
-                                    }}
-                                >
-                                    Avançar
-                                </Button>
-
+                                    content={'Avançar'}
+                                    widthButton='300px'
+                                />
                             </Grid>
 
-                            <Stack direction={'row'} xs={12} justifyContent={'center'} pt={4} width={'100%'}>
-                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ fontWeight: 'bold' }}>
+                            <Stack direction="row" justifyContent="center" pt={4} width="100%">
+                                <Stack color="rgba(255, 255, 255, 1)" sx={{ fontWeight: 'bold' }}>
                                     É novo por aqui?
                                 </Stack>
                                 <Stack pl={1}>
@@ -218,7 +210,7 @@ const LoginPage = () => {
                     </Grid>
                 </Grid>
                 <ToastContainer />
-            </Box>
+            </Box >
         </>
     );
 }
