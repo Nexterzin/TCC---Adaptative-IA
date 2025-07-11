@@ -1,6 +1,8 @@
+/* Css padrão do site */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -10,25 +12,23 @@
   }
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
-  overflow-y: hidden;
-  }
+}
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
 }
 
 a {
@@ -39,5 +39,77 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* From Uiverse.io by Akshdeep74644 */
+.loader {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spin-wrapper {
+  animation: slowspin 4s linear infinite;
+  display: contents;
+}
+
+.box-1 {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  background: conic-gradient(from 0deg,
+      rgba(0, 225, 255, 0.3),
+      rgba(255, 255, 255, 0.6),
+      rgba(0, 57, 110, 0.3),
+      rgba(0, 225, 255, 0.3));
+  border-radius: 50%;
+  animation: pulse 3.6s ease-in-out infinite;
+  filter: blur(1px);
+  box-shadow:
+    0 0 80px rgba(0, 225, 255, 0.4),
+    0 0 30px rgba(255, 255, 255, 0.3),
+    0 0 100px rgba(0, 57, 110, 0.2);
+}
+
+.box-1::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  background: rgb(119, 177, 238);
+  border-radius: 50%;
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.05),
+}
+
+@keyframes slowspin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  70% {
+    transform: scale(1.2);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
   }
 }
