@@ -17,7 +17,7 @@ import { Box, TextField, Typography, Grid, Link, Stack } from "@mui/material";
 import DefaultaButton from './Commons/Component/ComponentButton/DefaultButton';
 
 const LoginPage = () => {
-    const router = useRouter();
+   const router = useRouter();
 
     const [senha, setSenha] = useState('');
     const [usuario, setUsuario] = useState('');
@@ -55,7 +55,7 @@ const LoginPage = () => {
 
                 <Grid container spacing={0} alignItems="center" justifyContent="center" marginRight={'100px'}>
                     {/* Imagem */}
-                    <Grid item xs={12} md={2}>
+                    <Grid size={{xs:12, md:2}}>
                         <Box
                             component="img"
                             alt="Imagem Médica"
@@ -70,7 +70,7 @@ const LoginPage = () => {
                     </Grid>
 
                     {/* Card de Login como Grid */}
-                    <Grid item xs={12} md={8}>
+                    <Grid size={{xs:12, md:8}}>
                         <Grid
                             container
                             spacing={3}
@@ -83,13 +83,13 @@ const LoginPage = () => {
                                 marginLeft: { xs: '50px', md: '60px', lg: '500px' },
                             }}
                         >
-                            <Grid item xs={12}>
+                            <Grid size={12}>
                                 <Typography variant="h4" textAlign="center" fontWeight="bold" color="white">
                                     Entrar
                                 </Typography>
                             </Grid>
 
-                            <Grid item xs={12}>
+                            <Grid size={12}>
                                 <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
                                     Insira seu e-mail
                                 </Stack>
@@ -107,7 +107,8 @@ const LoginPage = () => {
                                                 borderColor: "#fff",
                                             },
                                             "&:hover fieldset": {
-                                                borderColor: "#000",
+                                                borderColor: "#fff",
+                                                opacity: 0.48
                                             },
                                             "&.Mui-focused fieldset": {
                                                 borderColor: "#fff",
@@ -123,7 +124,7 @@ const LoginPage = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12}>
+                            <Grid  size={12}>
                                 <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
                                     Insira sua senha
                                 </Stack>
@@ -147,7 +148,8 @@ const LoginPage = () => {
                                                 borderColor: "#fff",
                                             },
                                             "&:hover fieldset": {
-                                                borderColor: "#000",
+                                                borderColor: "#fff",
+                                                opacity: 0.48
                                             },
                                             "&.Mui-focused fieldset": {
                                                 borderColor: "#fff",
@@ -163,7 +165,7 @@ const LoginPage = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <DefaultaButton
                                     height={45}
                                     onClick={goToHome}
@@ -197,10 +199,10 @@ const LoginPage = () => {
                                 </Link>
                             </Stack>
 
-                            {/* <Grid item xs={12}>
+                            {/* <Grid size={12}>
                                 <Grid container spacing={2} justifyContent="center">
                                     {[FacebookIcon, InstagramIcon, GoogleIcon, XIcon, LinkedInIcon].map((Icon, index) => (
-                                        <Grid item key={index}>
+                                        <Grid  key={index}>
                                             <Icon sx={{ fontSize: 40, cursor: 'pointer', color: 'black' }} />
                                         </Grid>
                                     ))}

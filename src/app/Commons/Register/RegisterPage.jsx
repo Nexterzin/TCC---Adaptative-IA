@@ -13,7 +13,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
-import { Box, TextField, Typography, Grid, Link, Stack } from "@mui/material";
+import { Box, TextField, Typography, Grid, Link, Stack, Divider } from "@mui/material";
 import DefaultaButton from '../Component/ComponentButton/DefaultButton';
 
 const RegisterPage = () => {
@@ -22,12 +22,8 @@ const RegisterPage = () => {
     const [senha, setSenha] = useState('');
     const [usuario, setUsuario] = useState('');
 
-    const goToHome = () => {
-        if (usuario === 'bruno' && senha === 'admin') {
-            router.push('/PagesRouter/Home');
-        } else {
-            toast.warning("Usuário ou senha inválidos!");
-        }
+    const goToLogin = () => {
+        router.push('/PagesRouter/Login');
     };
 
     const goToRegister = () => {
@@ -54,12 +50,14 @@ const RegisterPage = () => {
             >
 
                 <Grid container spacing={0} alignItems="center" justifyContent="center" marginRight={'100px'}>
+
                     {/* Imagem */}
-                    <Grid item xs={12} md={2}>
+
+                    <Grid size={{ xs: 12, md: 1.5 }}>
                         <Box
                             component="img"
                             alt="Imagem Médica"
-                            src="/loginDoctor.png"
+                            src="/RegisterDoctor.png"
                             sx={{
                                 height: 'auto',
                                 ml: { md: '50px', lg: '190px' },
@@ -69,8 +67,9 @@ const RegisterPage = () => {
                         />
                     </Grid>
 
-                    {/* Card de Login como Grid */}
-                    <Grid item xs={12} md={8}>
+                    {/* Card de Registre-se como Grid */}
+
+                    <Grid size={{ xs: 12, md: 8 }}>
                         <Grid
                             container
                             spacing={3}
@@ -83,20 +82,19 @@ const RegisterPage = () => {
                                 marginLeft: { xs: '50px', md: '60px', lg: '500px' },
                             }}
                         >
-                            <Grid item xs={12}>
+                            <Grid size={12}>
                                 <Typography variant="h4" textAlign="center" fontWeight="bold" color="white">
-                                    Entrar
+                                    Registre-se
                                 </Typography>
                             </Grid>
 
-                            <Grid item xs={12}>
+                            <Grid size={12}>
                                 <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
-                                    Insira seu e-mail
+                                    Digite um e-mail ou celular em uso
                                 </Stack>
                                 <TextField
                                     fullWidth
                                     value={usuario}
-                                    placeholder="Insira seu E-mail"
                                     onChange={(e) => setUsuario(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
@@ -107,7 +105,8 @@ const RegisterPage = () => {
                                                 borderColor: "#fff",
                                             },
                                             "&:hover fieldset": {
-                                                borderColor: "#000",
+                                                borderColor: "#fff",
+                                                opacity: 0.48
                                             },
                                             "&.Mui-focused fieldset": {
                                                 borderColor: "#fff",
@@ -123,19 +122,18 @@ const RegisterPage = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12}>
+                            <Grid size={12}>
                                 <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
-                                    Insira sua senha
+                                    Digite uma senha
                                 </Stack>
                                 <TextField
                                     fullWidth
                                     value={senha}
                                     type="password"
-                                    placeholder="Insira sua Senha"
                                     onChange={(e) => setSenha(e.target.value)}
                                     onKeyDown={(event) => {
                                         if (event.key === 'Enter') {
-                                            goToHome();
+                                            goToLogin();
                                         }
                                     }}
                                     sx={{
@@ -147,7 +145,8 @@ const RegisterPage = () => {
                                                 borderColor: "#fff",
                                             },
                                             "&:hover fieldset": {
-                                                borderColor: "#000",
+                                                borderColor: "#fff",
+                                                opacity: 0.48
                                             },
                                             "&.Mui-focused fieldset": {
                                                 borderColor: "#fff",
@@ -163,44 +162,67 @@ const RegisterPage = () => {
                                 />
                             </Grid>
 
-                            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <DefaultaButton
-                                    height={45}
-                                    onClick={goToHome}
-                                    content={'Avançar'}
-                                    widthButton='300px'
+                            {/* Linha divisoria */}
+
+                            <Grid size={12}>
+                                <Box sx={{ width: '100%', py: 2 }}>
+                                    <Divider sx={{ bgcolor: "#fff", opacity: 1, borderBottomWidth: 1 }} />
+                                </Box>
+                            </Grid>
+
+                            <Grid size={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                    Como prefere ser chamado?
+                                </Stack>
+                                <TextField
+                                    fullWidth
+                                    value={senha}
+                                    type="password"
+                                    onChange={(e) => setSenha(e.target.value)}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') {
+                                            goToLogin();
+                                        }
+                                    }}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "10px",
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#fff",
+                                                opacity: 0.48
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
+                                        },
+                                    }}
                                 />
                             </Grid>
 
-                            <Stack direction="row" justifyContent="center" pt={4} width="100%">
-                                <Stack color="rgba(255, 255, 255, 1)" sx={{ fontWeight: 'bold' }}>
-                                    É novo por aqui?
-                                </Stack>
-                                <Stack pl={1}>
-                                    <Link
-                                        component="button"
-                                        onClick={goToRegister}
-                                        sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold' }}
-                                    >
-                                        Registre-se
-                                    </Link>
-                                </Stack>
-                            </Stack>
+                            <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <DefaultaButton
+                                    height={51}
+                                    onClick={goToLogin}
+                                    content={'Avançar'}
+                                    widthButton='380px'
+                                />
+                            </Grid>
 
-                            <Stack width={'100%'} justifyContent={'center'} pt={2}>
-                                <Link
-                                    component="button"
-                                    onClick={goToRecoveryPassword}
-                                    sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold' }}
-                                >
-                                    Esqueceu sua senha?
-                                </Link>
-                            </Stack>
-
-                            {/* <Grid item xs={12}>
+                            {/* <Grid size={12}>
                                 <Grid container spacing={2} justifyContent="center">
                                     {[FacebookIcon, InstagramIcon, GoogleIcon, XIcon, LinkedInIcon].map((Icon, index) => (
-                                        <Grid item key={index}>
+                                        <Grid  key={index}>
                                             <Icon sx={{ fontSize: 40, cursor: 'pointer', color: 'black' }} />
                                         </Grid>
                                     ))}
