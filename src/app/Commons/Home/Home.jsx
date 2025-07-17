@@ -74,7 +74,8 @@ const HomePage = () => {
                 <Stack className='spin-wrapper'>
                     <Stack className="box-1">
                         <Stack className="spinner">
-                            <Stack className="spinner1"></Stack>
+                            <Stack className="spinner1">
+                            </Stack>
                         </Stack>
                     </Stack>
                 </Stack>
