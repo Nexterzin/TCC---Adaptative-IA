@@ -53,6 +53,8 @@ const RegisterPage = () => {
 
                     {/* Imagem */}
 
+                    {/* TODO : Colocar o medico mais pro lado do form */}
+                    
                     <Grid size={{ xs: 12, md: 1.5 }} className='medicoImagem'>
                         <Box
                             component="img"
