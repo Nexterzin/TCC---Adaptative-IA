@@ -53,15 +53,16 @@ const RegisterPage = () => {
 
                     {/* Imagem */}
 
-                    <Grid size={{ xs: 12, md: 1.5 }}>
+                    <Grid size={{ xs: 12, md: 1.5 }} className='medicoImagem'>
                         <Box
                             component="img"
                             alt="Imagem Médica"
                             src="/RegisterDoctor.png"
                             sx={{
                                 height: 'auto',
-                                ml: { md: '50px', lg: '190px' },
-                                width: { md: '100%', lg: '190%' },
+                                ml: { md: '50px', lg: '400px' },
+                                width: { md: '30vw', lg: '20vw' },
+                                // mr: {md: '1200px', lg:'70px'},
                                 display: { xs: 'none', md: 'none', lg: 'block' },
                             }}
                         />
@@ -74,12 +75,15 @@ const RegisterPage = () => {
                             container
                             spacing={3}
                             sx={{
-                                p: 4,
+                                p: { xs: 2, sm: 3, md: 4,lg: 6 },
                                 boxShadow: 10,
                                 borderRadius: 3,
                                 background: 'rgba(54, 116, 181, 1)',
-                                width: { md: '80%', xs: '400px', lg: '40%' },
-                                marginLeft: { xs: '50px', md: '60px', lg: '500px' },
+                                width: { xs: '90vw', sm: '80vw', md: '60vw', lg: '30vw', xl: '25vw' },
+                                ml: { xs: '5%', md: '60px', lg: '44%' },
+                                maxWidth: { xs: '400px', sm: '500px', md: '600px', lg: '700px', xl: '800px' },
+                                mt: { xs: 2, sm: 4, md: 6 },
+
                             }}
                         >
                             <Grid size={12}>

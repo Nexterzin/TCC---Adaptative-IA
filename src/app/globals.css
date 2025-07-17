@@ -51,7 +51,10 @@ a {
 
 .spin-wrapper {
   animation: slowspin 4s linear infinite;
+  justify-content: center;
+  align-items: center;
   display: contents;
+  position: fixed;
 }
 
 .box-1 {
@@ -112,4 +115,8 @@ a {
     transform: scale(1);
     opacity: 0.9;
   }
+}
+
+.medicoImagem {
+  z-index: 1300;
 }
