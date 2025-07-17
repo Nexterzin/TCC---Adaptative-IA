@@ -51,7 +51,10 @@ a {
 
 .spin-wrapper {
   animation: slowspin 4s linear infinite;
+  justify-content: center;
+  align-items: center;
   display: contents;
+  position: fixed;
 }
 
 .box-1 {

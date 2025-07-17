@@ -212,7 +212,6 @@ const RegisterPage = () => {
 
                             <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <DefaultaButton
-                                    height={51}
                                     onClick={goToLogin}
                                     content={'Avançar'}
                                     widthButton='380px'

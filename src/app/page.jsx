@@ -80,7 +80,7 @@ const LoginPage = () => {
                                 borderRadius: 3,
                                 background: 'rgba(54, 116, 181, 1)',
                                 width: { md: '80%', xs: '400px', lg: '40%' },
-                                marginLeft: { xs: '50px', md: '60px', lg: '500px' },
+                                marginLeft: { xs: '5px', md: '60px', lg: '500px' },
                             }}
                         >
                             <Grid size={12}>
