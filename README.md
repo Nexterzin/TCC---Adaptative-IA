@@ -44,12 +44,85 @@
 
 <h2 style="color: #0ea5e9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">⚙️ Tecnologias Utilizadas</h2>
 <ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
-  <li><strong>Next.js</strong> – Framework React com SSR eficiente</li>
-  <li><strong>React</strong> – Interface reativa e dinâmica</li>
-  <li><strong>Material-UI (MUI)</strong> – Componentes estilosos e padronizados</li>
+  <li><strong>Next.js</strong> – Framework React com SSR eficiente: <code style="color: #2563eb;">^15.4.1</code></li>
+  <li><strong>React</strong> – Interface reativa e dinâmica: <code style="color: #2563eb;">^19.0.0</code></li>
+  <li><strong>React DOM</strong> – Pacote para interagir com o DOM: <code style="color: #2563eb;">^19.0.0</code></li>
+  <li><strong>Material-UI (MUI)</strong> – Componentes estilosos e padronizados:
+    <ul style="list-style: none; padding-left: 20px;">
+      <li><code style="color: #2563eb;">@mui/material</code>: <code style="color: #2563eb;">^7.2.0</code></li>
+      <li><code style="color: #2563eb;">@mui/icons-material</code>: <code style="color: #2563eb;">^7.2.0</code></li>
+      <li><code style="color: #2563eb;">@mui/styled-engine-sc</code>: <code style="color: #2563eb;">^6.4.6</code></li>
+    </ul>
+  </li>
+  <li><strong>Emotion</strong> – Bibliotecas de estilização CSS-in-JS:
+    <ul style="list-style: none; padding-left: 20px;">
+      <li><code style="color: #2563eb;">@emotion/react</code>: <code style="color: #2563eb;">^11.14.0</code></li>
+      <li><code style="color: #2563eb;">@emotion/styled</code>: <code style="color: #2563eb;">^11.14.1</code></li>
+    </ul>
+  </li>
+  <li><strong>Styled Components</strong> – Estilização CSS-in-JS: <code style="color: #2563eb;">^6.1.19</code></li>
   <li><strong>CSS Modules</strong> – Estilos encapsulados por componente</li>
-  <li><strong>React Toastify</strong> – Notificações modernas e interativas</li>
+  <li><strong>React Toastify</strong> – Notificações modernas e interativas: <code style="color: #2563eb;">^11.0.5</code></li>
 </ul>
+
+<h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🛠️ Configuração e Instalação</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  Siga os passos abaixo para configurar e executar o projeto em sua máquina local.
+</p>
+
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Pré-requisitos</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  Certifique-se de ter o <strong>Node.js</strong> e o <strong>npm</strong> (Node Package Manager) instalados em sua máquina.
+</p>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
+  <li><strong>Node.js</strong>: As dependências do projeto indicam compatibilidade com versões do Node.js a partir de <code style="color: #2563eb;">^18.18.0</code>. Você pode baixar e instalar a versão mais recente em <a href="https://nodejs.org/" style="color: #0ea5e9; text-decoration: none;">nodejs.org</a>.</li>
+</ul>
+
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Instalação</h3>
+<ol style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
+  <li><strong>Clone o repositório:</strong>
+    <pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px; overflow-x: auto;"><code style="color: #2563eb;">git clone &lt;URL_DO_SEU_REPOSITORIO&gt;
+cd tcc-project-front</code></pre>
+  </li>
+  <li><strong>Instale as dependências:</strong>
+    <pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm install</code></pre>
+  </li>
+</ol>
+
+<h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">▶️ Como Rodar o Projeto</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  Após a instalação das dependências, você pode iniciar a aplicação.
+</p>
+
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Modo de Desenvolvimento</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  Para rodar o projeto em modo de desenvolvimento com hot-reloading:
+</p>
+<pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run dev</code></pre>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  A aplicação estará acessível em <code style="color: #2563eb;">http://localhost:3000</code> (ou outra porta, se especificado pelo Next.js).
+</p>
+
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Construir para Produção</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  Para construir a aplicação para o ambiente de produção:
+</p>
+<pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run build</code></pre>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  Este comando criará uma pasta <code style="color: #2563eb;">.next</code> com a versão otimizada da sua aplicação.
+</p>
+
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Iniciar em Modo de Produção</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  Após construir a aplicação, você pode iniciá-la em modo de produção:
+</p>
+<pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run start</code></pre>
+
+<h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🧹 Linting</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  Para verificar a conformidade do código com as regras de linting:
+</p>
+<pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run lint</code></pre>
 
 <h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🎯 Objetivo e Futuro</h2>
 <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
@@ -65,9 +138,6 @@
 <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
   Curtiu o projeto? Dá uma olhada no código, abre uma <code>issue</code>, manda um <code>pull request</code> ou só deixa um ⭐ aí! Toda contribuição é bem-vinda. 🙌
 </p>
-
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto;">
   <h1 style="color: #007acc; text-align: center;">Diabetes Prediction with Machine Learning</h1>
@@ -100,17 +170,71 @@
 
   <h2 style="color: #444;">🛠 Technologies Used</h2>
   <ul>
-    <li><strong>Next.js:</strong> React framework for efficient rendering and dynamic routing.</li>
-    <li><strong>React:</strong> Main library for building reactive interfaces.</li>
-    <li><strong>Material-UI (MUI):</strong> Styled components that ensure visual consistency.</li>
+    <li><strong>Next.js:</strong> React framework for efficient rendering and dynamic routing: <code style="color: #2563eb;">^15.4.1</code></li>
+    <li><strong>React:</strong> Main library for building reactive interfaces: <code style="color: #2563eb;">^19.0.0</code></li>
+    <li><strong>React DOM:</strong> Package for interacting with the DOM: <code style="color: #2563eb;">^19.0.0</code></li>
+    <li><strong>Material-UI (MUI):</strong> Styled components that ensure visual consistency:
+      <ul style="list-style: none; padding-left: 20px;">
+        <li><code style="color: #2563eb;">@mui/material</code>: <code style="color: #2563eb;">^7.2.0</code></li>
+        <li><code style="color: #2563eb;">@mui/icons-material</code>: <code style="color: #2563eb;">^7.2.0</code></li>
+        <li><code style="color: #2563eb;">@mui/styled-engine-sc</code>: <code style="color: #2563eb;">^6.4.6</code></li>
+      </ul>
+    </li>
+    <li><strong>Emotion:</strong> CSS-in-JS styling libraries:
+      <ul style="list-style: none; padding-left: 20px;">
+        <li><code style="color: #2563eb;">@emotion/react</code>: <code style="color: #2563eb;">^11.14.0</code></li>
+        <li><code style="color: #2563eb;">@emotion/styled</code>: <code style="color: #2563eb;">^11.14.1</code></li>
+      </ul>
+    </li>
+    <li><strong>Styled Components:</strong> CSS-in-JS styling: <code style="color: #2563eb;">^6.1.19</code></li>
     <li><strong>CSS Modules:</strong> Local scope of styles for simplified maintenance.</li>
-    <li><strong>React Toastify:</strong> Elegant notifications that enrich user interaction.</li>
+    <li><strong>React Toastify:</strong> Elegant notifications that enrich user interaction: <code style="color: #2563eb;">^11.0.5</code></li>
   </ul>
 
-  <h2 style="color: #444;">🎯 Objective and Future</h2>
+  <h2 style="color: #444;">🛠️ Configuração e Instalação</h2>
+  <p>Siga os passos abaixo para configurar e executar o projeto em sua máquina local.</p>
+
+  <h3 style="color: #444;">Pré-requisitos</h3>
+  <p>Certifique-se de ter o <strong>Node.js</strong> e o <strong>npm</strong> (Node Package Manager) instalados em sua máquina.</p>
+  <ul>
+    <li><strong>Node.js</strong>: As dependências do projeto indicam compatibilidade com versões do Node.js a partir de <code style="color: #2563eb;">^18.18.0</code>. Você pode baixar e instalar a versão mais recente em <a href="https://nodejs.org/" style="color: #007acc; text-decoration: none;">nodejs.org</a>.</li>
+  </ul>
+
+  <h3 style="color: #444;">Instalação</h3>
+  <ol>
+    <li><strong>Clone o repositório:</strong>
+      <pre style="background-color: #eee; padding: 10px; border-radius: 5px; overflow-x: auto;"><code style="color: #2563eb;">git clone &lt;URL_DO_SEU_REPOSITORIO&gt;
+cd tcc-project-front</code></pre>
+    </li>
+    <li><strong>Instale as dependências:</strong>
+      <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm install</code></pre>
+    </li>
+  </ol>
+
+  <h2 style="color: #444;">▶️ Como Rodar o Projeto</h2>
+  <p>Após a instalação das dependências, você pode iniciar a aplicação.</p>
+
+  <h3 style="color: #444;">Modo de Desenvolvimento</h3>
+  <p>Para rodar o projeto em modo de desenvolvimento com hot-reloading:</p>
+  <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run dev</code></pre>
+  <p>A aplicação estará acessível em <code style="color: #2563eb;">http://localhost:3000</code> (ou outra porta, se especificado pelo Next.js).</p>
+
+  <h3 style="color: #444;">Construir para Produção</h3>
+  <p>Para construir a aplicação para o ambiente de produção:</p>
+  <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run build</code></pre>
+  <p>Este comando criará uma pasta <code style="color: #2563eb;">.next</code> com a versão otimizada da sua aplicação.</p>
+
+  <h3 style="color: #444;">Iniciar em Modo de Produção</h3>
+  <p>Após construir a aplicação, você pode iniciá-la em modo de produção:</p>
+  <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run start</code></pre>
+
+  <h2 style="color: #444;">🧹 Linting</h2>
+  <p>Para verificar a conformidade do código com as regras de linting:</p>
+  <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run lint</code></pre>
+
+  <h2 style="color: #444;">🎯 Objetivo e Futuro</h2>
   <p>This project is a demonstration of the potential integration between technology and healthcare, serving as a foundation for real diabetes prediction solutions. Future expansions may include the implementation of trained Machine Learning models and integration with medical data APIs, enhancing its practical applicability.</p>
 
   <h2 style="color: #444;">🤝 How to Contribute</h2>
   <p>Feel free to explore the code, open issues, or suggest improvements. This is an academic project with great potential for evolution, and your collaboration is welcome!</p>
 </div>
-
