@@ -191,46 +191,64 @@ cd tcc-project-front</code></pre>
     <li><strong>React Toastify:</strong> Elegant notifications that enrich user interaction: <code style="color: #2563eb;">^11.0.5</code></li>
   </ul>
 
-  <h2 style="color: #444;">🛠️ Configuração e Instalação</h2>
-  <p>Siga os passos abaixo para configurar e executar o projeto em sua máquina local.</p>
+  <h2 style="color: #444;">🛠️ Configuration and Installation</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  Follow the steps below to set up and run the project on your local machine.
+</p>
 
-  <h3 style="color: #444;">Pré-requisitos</h3>
-  <p>Certifique-se de ter o <strong>Node.js</strong> e o <strong>npm</strong> (Node Package Manager) instalados em sua máquina.</p>
-  <ul>
-    <li><strong>Node.js</strong>: As dependências do projeto indicam compatibilidade com versões do Node.js a partir de <code style="color: #2563eb;">^18.18.0</code>. Você pode baixar e instalar a versão mais recente em <a href="https://nodejs.org/" style="color: #007acc; text-decoration: none;">nodejs.org</a>.</li>
-  </ul>
+<h3 style="color: #444;">Prerequisites</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  Make sure you have <strong>Node.js</strong> and <strong>npm</strong> (Node Package Manager) installed on your machine.
+</p>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  <li><strong>Node.js</strong>: Project dependencies indicate compatibility with Node.js versions from <code style="color: #2563eb;">^18.18.0</code> onwards. You can download and install the latest version from <a href="https://nodejs.org/" style="color: #007acc; text-decoration: none;">nodejs.org</a>.</li>
+</ul>
 
-  <h3 style="color: #444;">Instalação</h3>
-  <ol>
-    <li><strong>Clone o repositório:</strong>
-      <pre style="background-color: #eee; padding: 10px; border-radius: 5px; overflow-x: auto;"><code style="color: #2563eb;">git clone &lt;URL_DO_SEU_REPOSITORIO&gt;
+<h3 style="color: #444;">Installation</h3>
+<ol style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  <li><strong>Clone the repository:</strong>
+    <pre style="background-color: #eee; padding: 10px; border-radius: 5px; overflow-x: auto;"><code style="color: #2563eb;">git clone &lt;YOUR_REPOSITORY_URL&gt;
 cd tcc-project-front</code></pre>
-    </li>
-    <li><strong>Instale as dependências:</strong>
-      <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm install</code></pre>
-    </li>
-  </ol>
+  </li>
+  <li><strong>Install dependencies:</strong>
+    <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm install</code></pre>
+  </li>
+</ol>
 
-  <h2 style="color: #444;">▶️ Como Rodar o Projeto</h2>
-  <p>Após a instalação das dependências, você pode iniciar a aplicação.</p>
+<h2 style="color: #444;">▶️ How to Run the Project</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  After installing the dependencies, you can start the application.
+</p>
 
-  <h3 style="color: #444;">Modo de Desenvolvimento</h3>
-  <p>Para rodar o projeto em modo de desenvolvimento com hot-reloading:</p>
-  <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run dev</code></pre>
-  <p>A aplicação estará acessível em <code style="color: #2563eb;">http://localhost:3000</code> (ou outra porta, se especificado pelo Next.js).</p>
+<h3 style="color: #444;">Development Mode</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  To run the project in development mode with hot-reloading:
+</p>
+<pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run dev</code></pre>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  The application will be accessible at <code style="color: #2563eb;">http://localhost:3000</code> (or another port, if specified by Next.js).
+</p>
 
-  <h3 style="color: #444;">Construir para Produção</h3>
-  <p>Para construir a aplicação para o ambiente de produção:</p>
-  <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run build</code></pre>
-  <p>Este comando criará uma pasta <code style="color: #2563eb;">.next</code> com a versão otimizada da sua aplicação.</p>
+<h3 style="color: #444;">Build for Production</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  To build the application for the production environment:
+</p>
+<pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run build</code></pre>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  This command will create a folder <code style="color: #2563eb;">.next</code> with the optimized version of your application.
+</p>
 
-  <h3 style="color: #444;">Iniciar em Modo de Produção</h3>
-  <p>Após construir a aplicação, você pode iniciá-la em modo de produção:</p>
-  <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run start</code></pre>
+<h3 style="color: #444;">Start in Production Mode</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  After building the application, you can start it in production mode:
+</p>
+<pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run start</code></pre>
 
-  <h2 style="color: #444;">🧹 Linting</h2>
-  <p>Para verificar a conformidade do código com as regras de linting:</p>
-  <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run lint</code></pre>
+<h2 style="color: #444;">🧹 Linting</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+  To check code compliance with linting rules:
+</p>
+<pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run lint</code></pre>
 
   <h2 style="color: #444;">🎯 Objetivo e Futuro</h2>
   <p>This project is a demonstration of the potential integration between technology and healthcare, serving as a foundation for real diabetes prediction solutions. Future expansions may include the implementation of trained Machine Learning models and integration with medical data APIs, enhancing its practical applicability.</p>
