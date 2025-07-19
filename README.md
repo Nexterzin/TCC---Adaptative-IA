@@ -140,7 +140,7 @@ cd tcc-project-front</code></pre>
 </p>
 
 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto;">
-  <h1 style="color: #007acc; text-align: center;">Diabetes Prediction with Machine Learning</h1>
+  <h1 style="color: #007acc; text-align: center;"> 🔬 Diabetes Prediction with Machine Learning</h1>
 
   <p>Welcome to the repository of my <strong>Final Course Project (FCP)</strong>, an innovative web system designed to predict the type of diabetes based on medical data, using Machine Learning techniques. This project combines a modern and responsive user interface with a robust technical architecture, demonstrating the potential of technology in the healthcare field.</p>
 
