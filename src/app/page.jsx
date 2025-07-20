@@ -26,7 +26,14 @@ const LoginPage = () => {
         if (usuario === 'bruno' && senha === 'admin') {
             router.push('/PagesRouter/Home');
         } else {
-            toast.warning("Usuário ou senha inválidos!");
+            toast.warning("Usuário ou senha inválidos!", {
+                style: {
+                    backgroundColor: '#333',
+                    color: '#fdd835',
+                    fontWeight: 'bold',
+                    fontSize: '16px',
+                }
+            });
         }
     };
 
@@ -69,7 +76,7 @@ const LoginPage = () => {
                     </Grid>
 
                     {/* Card de Login */}
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6} alignItems="center" justifyContent="center">
                         <Box
                             sx={{
                                 p: 4,
@@ -78,10 +85,6 @@ const LoginPage = () => {
                                 background: 'rgba(54, 116, 181, 1)',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                width: '190%',
-                                maxWidth: '500px',
                                 margin: '0 auto',
                             }}
                         >
@@ -185,7 +188,6 @@ const LoginPage = () => {
                         </Box>
                     </Grid>
                 </Grid>
-
             </Box>
             <ToastContainer />
         </>

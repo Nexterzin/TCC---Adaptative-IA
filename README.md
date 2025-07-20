@@ -14,7 +14,6 @@
   <br>
   O sistema conta com:
   <ul style="list-style: '🔥 '; padding-left: 25px; color: #111827;">
-    <li>Temas claro e escuro</li>
     <li>Componentes reutilizáveis</li>
     <li>Animações suaves que dão vida à interface</li>
     <li>Login seguro e upload de laudos médicos</li>
@@ -140,119 +139,143 @@ cd tcc-project-front</code></pre>
 </p>
 
 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto;">
-  <h1 style="color: #007acc; text-align: center;"> 🔬 Diabetes Prediction with Machine Learning</h1>
+<h1 style="color: #10b981; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 3em; margin-top: 20px;">
+  🔬 Diabetes Prediction with Machine Learning
+</h1>
 
-  <p>Welcome to the repository of my <strong>Final Course Project (FCP)</strong>, an innovative web system designed to predict the type of diabetes based on medical data, using Machine Learning techniques. This project combines a modern and responsive user interface with a robust technical architecture, demonstrating the potential of technology in the healthcare field.</p>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1f2937; font-size: 1.1em; line-height: 1.8; margin: 20px 0;">
+  Welcome to the repository of my <strong style="color: #f97316;">Final Course Project (FCP)</strong>! 💡
+  <br><br>
+  This web system was developed with a focus on <strong>diabetes prediction</strong> based on medical data, using <strong style="color: #3b82f6;">Machine Learning</strong>. It combines a modern, responsive, and intuitive interface with a cutting-edge technical structure, showing how technology can make a difference in the healthcare field. ❤️‍🩹
+</p>
 
-  <h2 style="color: #444;">🔍 Overview</h2>
-  <p>This application was developed with <strong>Next.js</strong>, leveraging server-side rendering to provide optimized performance and a smooth experience. The styling uses modern CSS with support for light and dark themes, while reusable components and custom animations enhance user interaction.</p>
-  <p>The system includes secure authentication, medical report uploads, and a diabetes prediction simulation, serving as a proof of concept for Machine Learning-based solutions.</p>
-
-  <h2 style="color: #444;">🚀 Main Features</h2>
-  <ul>
-    <li><strong>User Authentication:</strong> Simple and effective login system, with navigation to registration and password recovery.</li>
-    <li><strong>Report Upload and Analysis:</strong> Intuitive interface for submitting medical data, with visual feedback through an animated loader.</li>
-    <li><strong>Prediction Simulation:</strong> Mock results illustrating different types of diabetes, accompanied by detailed descriptions.</li>
-    <li><strong>Responsive Design:</strong> Adaptable styles ensure usability on devices of various sizes.</li>
-    <li><strong>Visual Feedback:</strong> Elegant animations and notifications with React Toastify for an interactive experience.</li>
+<h2 style="color: #2563eb; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">📌 Overview</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #374151; font-size: 1em; line-height: 1.7;">
+  Created with <strong>Next.js</strong>, this project uses server-side rendering for top-notch performance 🚀.
+  <br>
+  The system includes:
+  <ul style="list-style: '🔥 '; padding-left: 25px; color: #111827;">
+    <li>Reusable components</li>
+    <li>Smooth animations that bring the interface to life</li>
+    <li>Secure login and medical report upload</li>
+    <li>Prediction simulation with AI</li>
   </ul>
+</p>
 
-  <h2 style="color: #444;">📁 Project Structure</h2>
-  <ul>
-    <li><code>globals.css</code>: Defines global styles, CSS variables for themes, and sophisticated animations for the loader.</li>
-    <li><code>layout.js</code>: Configures the Poppins font and metadata, serving as the base for the application layout.</li>
-    <li><code>page.jsx</code> (LoginPage): Implements authentication with Material-UI components, providing a consistent and user-friendly interface.</li>
-    <li><code>page.module.css</code>: Modular styles for the main page, optimized for different color schemes and devices.</li>
-    <li><code>DefaultButton.jsx</code>: Reusable button component, customizable via props for design flexibility.</li>
-    <li><code>Home.jsx</code>: Central page for report uploads and display of simulated results, with integrated animations.</li>
-    <li><code>page.jsx</code> (LoginRouter and HomeRouter): Manages routing to the login and home pages.</li>
-  </ul>
+<h2 style="color: #9333ea; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">✨ Main Features</h2>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #111827; font-size: 1em; line-height: 1.7;">
+  <li><strong>🔐 Authentication:</strong> Modern login system with password recovery and registration.</li>
+  <li><strong>📄 Report Upload:</strong> Friendly interface with visual feedback and animated loading.</li>
+  <li><strong>🤖 Prediction Simulation:</strong> Simulated results with explanation of diabetes types.</li>
+  <li><strong>📱 Responsive Design:</strong> Works beautifully on mobile, tablet, and PC.</li>
+  <li><strong>🎉 Visual Feedback:</strong> Cool notifications with React Toastify and smooth animations.</li>
+</ul>
 
-  <h2 style="color: #444;">🛠 Technologies Used</h2>
-  <ul>
-    <li><strong>Next.js:</strong> React framework for efficient rendering and dynamic routing: <code style="color: #2563eb;">^15.4.1</code></li>
-    <li><strong>React:</strong> Main library for building reactive interfaces: <code style="color: #2563eb;">^19.0.0</code></li>
-    <li><strong>React DOM:</strong> Package for interacting with the DOM: <code style="color: #2563eb;">^19.0.0</code></li>
-    <li><strong>Material-UI (MUI):</strong> Styled components that ensure visual consistency:
-      <ul style="list-style: none; padding-left: 20px;">
-        <li><code style="color: #2563eb;">@mui/material</code>: <code style="color: #2563eb;">^7.2.0</code></li>
-        <li><code style="color: #2563eb;">@mui/icons-material</code>: <code style="color: #2563eb;">^7.2.0</code></li>
-        <li><code style="color: #2563eb;">@mui/styled-engine-sc</code>: <code style="color: #2563eb;">^6.4.6</code></li>
-      </ul>
-    </li>
-    <li><strong>Emotion:</strong> CSS-in-JS styling libraries:
-      <ul style="list-style: none; padding-left: 20px;">
-        <li><code style="color: #2563eb;">@emotion/react</code>: <code style="color: #2563eb;">^11.14.0</code></li>
-        <li><code style="color: #2563eb;">@emotion/styled</code>: <code style="color: #2563eb;">^11.14.1</code></li>
-      </ul>
-    </li>
-    <li><strong>Styled Components:</strong> CSS-in-JS styling: <code style="color: #2563eb;">^6.1.19</code></li>
-    <li><strong>CSS Modules:</strong> Local scope of styles for simplified maintenance.</li>
-    <li><strong>React Toastify:</strong> Elegant notifications that enrich user interaction: <code style="color: #2563eb;">^11.0.5</code></li>
-  </ul>
+<h2 style="color: #e11d48; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🧩 Project Structure</h2>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1f2937; font-size: 1em; line-height: 1.7;">
+  <li><code style="color: #2563eb;">globals.css</code>: Global styles, variables, and loader animations.</li>
+  <li><code style="color: #2563eb;">layout.js</code>: Base layout with Poppins font and metadata.</li>
+  <li><code style="color: #2563eb;">page.jsx (LoginPage)</code>: Login screen with Material-UI.</li>
+  <li><code style="color: #2563eb;">page.module.css</code>: Modular and responsive styling.</li>
+  <li><code style="color: #2563eb;">DefaultButton.jsx</code>: Reusable and customizable button component.</li>
+  <li><code style="color: #2563eb;">Home.jsx</code>: Report upload and results display page.</li>
+  <li><code style="color: #2563eb;">LoginRouter / HomeRouter</code>: Page routing.</li>
+</ul>
 
-  <h2 style="color: #444;">🛠️ Configuration and Installation</h2>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<h2 style="color: #0ea5e9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">⚙️ Technologies Used</h2>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
+  <li><strong>Next.js</strong> – React framework with efficient SSR: <code style="color: #2563eb;">^15.4.1</code></li>
+  <li><strong>React</strong> – Reactive and dynamic interface: <code style="color: #2563eb;">^19.0.0</code></li>
+  <li><strong>React DOM</strong> – DOM interaction package: <code style="color: #2563eb;">^19.0.0</code></li>
+  <li><strong>Material-UI (MUI)</strong> – Stylish and standardized components:
+    <ul style="list-style: none; padding-left: 20px;">
+      <li><code style="color: #2563eb;">@mui/material</code>: <code style="color: #2563eb;">^7.2.0</code></li>
+      <li><code style="color: #2563eb;">@mui/icons-material</code>: <code style="color: #2563eb;">^7.2.0</code></li>
+      <li><code style="color: #2563eb;">@mui/styled-engine-sc</code>: <code style="color: #2563eb;">^6.4.6</code></li>
+    </ul>
+  </li>
+  <li><strong>Emotion</strong> – CSS-in-JS styling libraries:
+    <ul style="list-style: none; padding-left: 20px;">
+      <li><code style="color: #2563eb;">@emotion/react</code>: <code style="color: #2563eb;">^11.14.0</code></li>
+      <li><code style="color: #2563eb;">@emotion/styled</code>: <code style="color: #2563eb;">^11.14.1</code></li>
+    </ul>
+  </li>
+  <li><strong>Styled Components</strong> – CSS-in-JS styling: <code style="color: #2563eb;">^6.1.19</code></li>
+  <li><strong>CSS Modules</strong> – Component-scoped styles</li>
+  <li><strong>React Toastify</strong> – Modern and interactive notifications: <code style="color: #2563eb;">^11.0.5</code></li>
+</ul>
+
+<h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🛠️ Setup and Installation</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
   Follow the steps below to set up and run the project on your local machine.
 </p>
 
-<h3 style="color: #444;">Prerequisites</h3>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Prerequisites</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
   Make sure you have <strong>Node.js</strong> and <strong>npm</strong> (Node Package Manager) installed on your machine.
 </p>
-<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
-  <li><strong>Node.js</strong>: Project dependencies indicate compatibility with Node.js versions from <code style="color: #2563eb;">^18.18.0</code> onwards. You can download and install the latest version from <a href="https://nodejs.org/" style="color: #007acc; text-decoration: none;">nodejs.org</a>.</li>
+<ul style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
+  <li><strong>Node.js</strong>: Project dependencies indicate compatibility with Node.js versions from <code style="color: #2563eb;">^18.18.0</code>. You can download and install the latest version from <a href="https://nodejs.org/" style="color: #0ea5e9; text-decoration: none;">nodejs.org</a>.</li>
 </ul>
 
-<h3 style="color: #444;">Installation</h3>
-<ol style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Installation</h3>
+<ol style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
   <li><strong>Clone the repository:</strong>
-    <pre style="background-color: #eee; padding: 10px; border-radius: 5px; overflow-x: auto;"><code style="color: #2563eb;">git clone &lt;YOUR_REPOSITORY_URL&gt;
+    <pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px; overflow-x: auto;"><code style="color: #2563eb;">git clone &lt;YOUR_REPOSITORY_URL&gt;
 cd tcc-project-front</code></pre>
   </li>
   <li><strong>Install dependencies:</strong>
-    <pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm install</code></pre>
+    <pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm install</code></pre>
   </li>
 </ol>
 
-<h2 style="color: #444;">▶️ How to Run the Project</h2>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">▶️ How to Run the Project</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
   After installing the dependencies, you can start the application.
 </p>
 
-<h3 style="color: #444;">Development Mode</h3>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Development Mode</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
   To run the project in development mode with hot-reloading:
 </p>
-<pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run dev</code></pre>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run dev</code></pre>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
   The application will be accessible at <code style="color: #2563eb;">http://localhost:3000</code> (or another port, if specified by Next.js).
 </p>
 
-<h3 style="color: #444;">Build for Production</h3>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Build for Production</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
   To build the application for the production environment:
 </p>
-<pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run build</code></pre>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
-  This command will create a folder <code style="color: #2563eb;">.next</code> with the optimized version of your application.
+<pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run build</code></pre>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  This command will create a <code style="color: #2563eb;">.next</code> folder with the optimized version of your application.
 </p>
 
-<h3 style="color: #444;">Start in Production Mode</h3>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<h3 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Start in Production Mode</h3>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
   After building the application, you can start it in production mode:
 </p>
-<pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run start</code></pre>
+<pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run start</code></pre>
 
-<h2 style="color: #444;">🧹 Linting</h2>
-<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; font-size: 1em; line-height: 1.7;">
+<h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🧹 Linting</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
   To check code compliance with linting rules:
 </p>
-<pre style="background-color: #eee; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run lint</code></pre>
+<pre style="background-color: #f3f4f6; padding: 10px; border-radius: 5px;"><code style="color: #2563eb;">npm run lint</code></pre>
 
-  <h2 style="color: #444;">🎯 Objetivo e Futuro</h2>
-  <p>This project is a demonstration of the potential integration between technology and healthcare, serving as a foundation for real diabetes prediction solutions. Future expansions may include the implementation of trained Machine Learning models and integration with medical data APIs, enhancing its practical applicability.</p>
+<h2 style="color: #f59e0b; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🎯 Purpose and Future</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #334155; font-size: 1em; line-height: 1.7;">
+  The project serves as a <strong>proof of concept</strong> for the integration between technology and healthcare. In the future, the idea is:
+  <ul style="list-style: '📈 '; padding-left: 25px; color: #1e293b;">
+    <li>Integrate real Machine Learning models</li>
+    <li>Connect with medical APIs</li>
+    <li>Transform it into a truly useful tool for clinics and doctors</li>
+  </ul>
+</p>
 
-  <h2 style="color: #444;">🤝 How to Contribute</h2>
-  <p>Feel free to explore the code, open issues, or suggest improvements. This is an academic project with great potential for evolution, and your collaboration is welcome!</p>
+<h2 style="color: #10b981; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🤝 How to Contribute</h2>
+<p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1e293b; font-size: 1em; line-height: 1.7;">
+  Liked the project? Check out the code, open an <code>issue</code>, send a <code>pull request</code> or just leave a ⭐! Every contribution is welcome. 🙌
+</p>
 </div>

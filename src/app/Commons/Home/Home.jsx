@@ -2,11 +2,9 @@
 
 import '@/app/globals.css'
 
-import { useState } from 'react';
-import { Box, Stack, Typography } from "@mui/material"
+import { useRef, useState } from 'react';
+import { Box, Stack, Typography, CircularProgress } from "@mui/material"
 
-import SendIcon from '@mui/icons-material/Send'
-import DefaultButton from '../Component/ComponentButton/DefaultButton'
 import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
 const mockPredictionData = [
@@ -18,46 +16,12 @@ const mockPredictionData = [
         prediction: 'Diabetes Tipo 2',
         predictionDesc: 'Mais comum em adultos, associada à resistência à insulina e obesidade. Mas lembre-se de levar em consideração as informações do seu médico.'
     },
-    {
-        prediction: 'Diabetes Gestacional',
-        predictionDesc: 'Desenvolvida durante a gravidez, pode desaparecer após o parto. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Diabetes LADA',
-        predictionDesc: 'Forma autoimune em adultos, evolução lenta parecida com o Tipo 1. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Diabetes MODY',
-        predictionDesc: 'Rara e hereditária, aparece em jovens mas não é autoimune. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Diabetes Secundário a Doença Pancreática',
-        predictionDesc: 'Decorrente de pancreatite ou cirurgias no pâncreas. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Diabetes Induzido por Medicamentos',
-        predictionDesc: 'Causado por uso prolongado de medicamentos como corticoides. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Diabetes por Doenças Hormonais',
-        predictionDesc: 'Relacionada a distúrbios hormonais como a síndrome de Cushing. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Diabetes Neonatal',
-        predictionDesc: 'Muito rara, aparece nos primeiros meses de vida do bebê. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Diabetes Autoimune Fulminante',
-        predictionDesc: 'Tipo agressivo que destrói rapidamente as células do pâncreas. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Nenhum sinal de diabetes identificado',
-        predictionDesc: 'Com base nos dados fornecidos, não foram encontrados indícios de diabetes. Continue mantendo hábitos saudáveis! Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
 ];
 
 const HomePage = () => {
     const [currentResult, setCurrentResult] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const inputFileRef = useRef(null);
 
     const randomTest = () => {
         const randomIndex = Math.floor(Math.random() * mockPredictionData.length);
@@ -80,16 +44,39 @@ const HomePage = () => {
         switch (prediction) {
             case 'Diabetes Tipo 1': return 'tipo_1.pdf';
             case 'Diabetes Tipo 2': return 'tipo_2.pdf';
-            case 'Diabetes Gestacional': return 'gestacional.pdf';
-            case 'Diabetes LADA': return 'lada.pdf';
-            case 'Diabetes MODY': return 'mody.pdf';
-            case 'Diabetes Secundário a Doença Pancreática': return 'pancreatica.pdf';
-            case 'Diabetes Induzido por Medicamentos': return 'medicamento.pdf';
-            case 'Diabetes por Doenças Hormonais': return 'endocrinopatia.pdf';
-            case 'Diabetes Neonatal': return 'neonatal.pdf';
-            case 'Diabetes Autoimune Fulminante': return 'fulminante.pdf';
-            case 'Nenhum sinal de diabetes identificado': return 'sem_diabete.pdf';
+            // ... Adicionar outros casos futuramente, verificar IA
             default: return '';
+        }
+    };
+
+    const handleButtonClick = () => {
+        inputFileRef.current?.click();
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setLoading(true);
+            setCurrentResult(null);
+
+            setTimeout(() => {
+                const fileName = file.name.toLowerCase();
+
+                let prediction;
+                if (fileName.includes('tipo_1')) {
+                    prediction = mockPredictionData.find(item => item.prediction === 'Diabetes Tipo 1');
+                } else if (fileName.includes('tipo_2')) {
+                    prediction = mockPredictionData.find(item => item.prediction === 'Diabetes Tipo 2');
+                } else {
+                    prediction = {
+                        prediction: 'Nenhum sinal de diabetes identificado',
+                        predictionDesc: 'Com base no arquivo enviado, não foi possível identificar sinais claros de diabetes.'
+                    };
+                }
+
+                setCurrentResult(prediction);
+                setLoading(false);
+            }, 2000);
         }
     };
 
@@ -138,7 +125,6 @@ const HomePage = () => {
                         >
                             {currentResult?.prediction}
                         </Typography>
-
                     </Stack>
                 </Stack>
 
@@ -146,7 +132,23 @@ const HomePage = () => {
                     <Typography sx={{ color: '#333', fontSize: 20, px: 5, textAlign: 'center' }}>
                         {currentResult?.predictionDesc?.split('Mas lembre-se')[0]}
                     </Typography>
-                    {currentResult && (
+
+                    {loading && (
+                        <Stack
+                            sx={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                mt: 5,
+                            }}
+                        >
+                            <CircularProgress />
+                            <Typography sx={{ mt: 2, fontWeight: 'bold', color: '#2a9df4' }}>
+                                Processando seu laudo...
+                            </Typography>
+                        </Stack>
+                    )}
+
+                    {currentResult && !loading && (
                         <Stack>
                             <Typography
                                 sx={{
@@ -176,25 +178,46 @@ const HomePage = () => {
                     )}
                 </Stack>
 
-                {!currentResult &&
-                    <Stack sx={{
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}>
-                        <Stack sx={{ mb: 2 }}>
+                {!currentResult && !loading && (
+                    <Stack
+                        sx={{
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: 2,
+                        }}
+                    >
+                        {/* <Stack>
                             <DefaultButton
                                 height={35}
                                 onClick={randomTest}
                                 content={<SendIcon sx={{ transform: 'rotate(-20deg)', mt: -0.5 }} />}
                             />
-                        </Stack>
-                        <Stack>
-                            <Typography sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold' }}>
-                                Arraste ou envie pelo ícone seu laudo médico para análise.
-                            </Typography>
-                        </Stack>
+                        </Stack> */}
+
+                        <DefaultaButton
+                            content="Enviar arquivo (PDF, JPG, PNG)"
+                            onClick={handleButtonClick}
+                            height={45}
+                            widthButton="300px"
+                            backgroundColor="#2a9df4"
+                            colorText="#fff"
+                            hoverBackgroundColor="rgba(42, 157, 244, 0.8)"
+                        />
+
+                        <input
+                            ref={inputFileRef}
+                            id="fileUpload"
+                            type="file"
+                            accept=".pdf,.jpg,.jpeg,.png"
+                            onChange={handleFileChange}
+                            style={{ display: 'none' }}
+                        />
+
+                        <Typography sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold', textAlign: 'center', whiteSpace: 'pre-line' }}>
+                            Envie seu laudo médico para análise. {"\n"}A IA irá interpretar os dados futuramente.
+                        </Typography>
                     </Stack>
-                }
+                )}
             </Stack>
         </Box >
     );
