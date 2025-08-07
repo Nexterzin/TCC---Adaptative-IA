@@ -49,30 +49,30 @@ const RegisterPage = () => {
                 }}
             >
 
-                <Grid container spacing={0} alignItems="center" justifyContent="center" marginRight={'100px'}>
+                <Grid container spacing={0} alignItems="center" justifyContent="center">
 
                     {/* Imagem */}
 
                     {/* TODO : Colocar o medico mais pro lado do form */}
                     
-                    <Grid size={{ xs: 12, md: 1.5 }} className='medicoImagem'>
+                    <Grid size={{ xs: 3, md: 3, lg: 3 }} className='medicoImagem'>
                         <Box
                             component="img"
-                            alt="Imagem Médica"
+                            alt="Imagem Médico"
                             src="/RegisterDoctor.png"
                             sx={{
                                 height: 'auto',
-                                ml: { md: '50px', lg: '400px' },
                                 width: { md: '30vw', lg: '20vw' },
-                                // mr: {md: '1200px', lg:'70px'},
                                 display: { xs: 'none', md: 'none', lg: 'block' },
+                                ml: {lg: '-10px'}
+                                 
                             }}
                         />
                     </Grid>
 
                     {/* Card de Registre-se como Grid */}
 
-                    <Grid size={{ xs: 12, md: 8 }}>
+                    <Grid size={{ xs: 6, md: 6, lg: 6 }}>
                         <Grid
                             container
                             spacing={3}
@@ -81,10 +81,10 @@ const RegisterPage = () => {
                                 boxShadow: 10,
                                 borderRadius: 3,
                                 background: 'rgba(54, 116, 181, 1)',
-                                width: { xs: '90vw', sm: '80vw', md: '60vw', lg: '30vw', xl: '25vw' },
-                                ml: { xs: '5%', md: '60px', lg: '44%' },
-                                maxWidth: { xs: '400px', sm: '500px', md: '600px', lg: '700px', xl: '800px' },
-                                mt: { xs: 2, sm: 4, md: 6 },
+                                display: 'flex',
+                                flexDirection: 'column',
+                                width: {lg: '500px'},
+                                position: 'relative'
 
                             }}
                         >
@@ -93,6 +93,11 @@ const RegisterPage = () => {
                                     Registre-se
                                 </Typography>
                             </Grid>
+                            
+                            <Typography variant="h6" textAlign="center" fontWeight="bold" color="white" className='tituloBalao'>
+                                Para ter acesso ao sistema!
+                            </Typography>
+
 
                             <Grid size={12}>
                                 <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
@@ -127,6 +132,7 @@ const RegisterPage = () => {
                                     }}
                                 />
                             </Grid>
+                            
 
                             <Grid size={12}>
                                 <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
@@ -234,6 +240,10 @@ const RegisterPage = () => {
                                 </Grid>
                             </Grid> */}
                         </Grid>
+                        
+                    </Grid>
+                    <Grid size={{ xs: 3, md: 3, lg: 3 }} className='medicoImagem'>
+                        
                     </Grid>
                 </Grid>
                 <ToastContainer />
