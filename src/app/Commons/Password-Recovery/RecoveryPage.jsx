@@ -1,11 +1,238 @@
 'use client'
 
-const RecoveryPasswordPage = ()=> {
-    return(
+import '@/app/globals.css'
+import 'react-toastify/dist/ReactToastify.css';
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from 'react-toastify';
+import { Box, TextField, Typography, Grid, Link, Stack, Divider } from "@mui/material";
+import DefaultaButton from '../Component/ComponentButton/DefaultButton';
+
+const RecoveryPasswordPage = () => {
+    const router = useRouter();
+
+    const [senha, setSenha] = useState('');
+    const [usuario, setUsuario] = useState('');
+
+    const goToLogin = () => {
+        router.push('/PagesRouter/Login');
+    };
+
+    const goToRegister = () => {
+        router.push('/PagesRouter/Register');
+    };
+
+    const goToRecoveryPassword = () => {
+        router.push('/PagesRouter/Password-recovery');
+    };
+
+    return (
         <>
-        Recovery password page!!
+            <Box
+                sx={{
+                    display: 'flex',
+                    minWidth: '100vw',
+                    minHeight: '100vh',
+                    alignItems: 'center',
+                    backgroundSize: 'cover',
+                    justifyContent: 'center',
+                    backgroundPosition: 'center',
+                    backgroundImage: 'url("/FundoLogin.png")',
+                }}
+            >
+
+                <Grid container spacing={0} alignItems="center" justifyContent="center">
+
+                    {/* Imagem */}
+
+                    {/* TODO : Colocar o medico mais pro lado do form */}
+                    
+                    <Grid size={{ xs: 3, md: 3, lg: 3 }} className='medicoImagem'>
+                        <Box
+                            component="img"
+                            alt="Imagem Médico"
+                            src="/RegisterDoctor.png"
+                            sx={{
+                                height: 'auto',
+                                width: { md: '30vw', lg: '20vw' },
+                                display: { xs: 'none', md: 'none', lg: 'block' },
+                                ml: {lg: '-10px'}
+                                 
+                            }}
+                        />
+                    </Grid>
+
+                    {/* Card de Registre-se como Grid */}
+
+                    <Grid size={{ xs: 6, md: 6, lg: 6 }}>
+                        <Grid
+                            container
+                            spacing={3}
+                            sx={{
+                                p: { xs: 2, sm: 3, md: 4,lg: 6 },
+                                boxShadow: 10,
+                                borderRadius: 3,
+                                background: 'rgba(54, 116, 181, 1)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                width: {lg: '500px'},
+                                position: 'relative'
+
+                            }}
+                        >
+                            <Grid size={12}>
+                                <Typography variant="h4" textAlign="center" fontWeight="bold" color="white">
+                                    Registre-se
+                                </Typography>
+                            </Grid>
+                            
+                            <Typography variant="h6" textAlign="center" fontWeight="bold" color="white" className='tituloBalao'>
+                                Para ter acesso ao sistema!
+                            </Typography>
+
+
+                            <Grid size={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                    Digite um e-mail ou celular em uso
+                                </Stack>
+                                <TextField
+                                    fullWidth
+                                    value={usuario}
+                                    onChange={(e) => setUsuario(e.target.value)}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "10px",
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#fff",
+                                                opacity: 0.48
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+                            
+
+                            <Grid size={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                    Digite uma senha
+                                </Stack>
+                                <TextField
+                                    fullWidth
+                                    value={senha}
+                                    type="password"
+                                    onChange={(e) => setSenha(e.target.value)}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') {
+                                            goToLogin();
+                                        }
+                                    }}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "10px",
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#fff",
+                                                opacity: 0.48
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+
+                            {/* Linha divisoria */}
+
+                            <Grid size={12}>
+                                <Box sx={{ width: '100%', py: 2 }}>
+                                    <Divider sx={{ bgcolor: "#fff", opacity: 1, borderBottomWidth: 1 }} />
+                                </Box>
+                            </Grid>
+
+                            <Grid size={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                    Como prefere ser chamado?
+                                </Stack>
+                                <TextField
+                                    fullWidth
+                                    value={senha}
+                                    type="password"
+                                    onChange={(e) => setSenha(e.target.value)}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') {
+                                            goToLogin();
+                                        }
+                                    }}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "10px",
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#fff",
+                                                opacity: 0.48
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
+                                        },
+                                    }}
+                                />
+                            </Grid>
+
+                            <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <DefaultaButton
+                                    onClick={goToLogin}
+                                    content={'Avançar'}
+                                    widthButton='380px'
+                                />
+                            </Grid>
+                        </Grid>
+                        
+                    </Grid>
+                    <Grid size={{ xs: 3, md: 3, lg: 3 }} className='medicoImagem'>
+                        
+                    </Grid>
+                </Grid>
+                <ToastContainer />
+            </Box >
         </>
-    )
+    );
 }
 
 export default RecoveryPasswordPage

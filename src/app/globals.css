@@ -1,5 +1,7 @@
-/* Css padrão do site */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');/* Css padrão do site */
 :root {
+  --font-roboto:"Roboto";
   --background: #ffffff;
   --foreground: #171717;
   font-family: var(--font-poppins), sans-serif;
@@ -23,7 +25,7 @@ body {
 
 body {
   margin: 0;
-  font-family: var(--font-poppins), sans-serif;
+  font-family: var(--font-roboto), sans-serif;
 }
 
 * {
@@ -85,6 +87,27 @@ a {
     inset 2px 2px 5px rgba(0, 0, 0, 0.05),
 }
 
+.medicoImagem {
+  z-index: 1300;
+}
+
+.tituloBalao {
+  position: absolute;
+  z-index: 1300;
+}
+
+.labelForm{
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 1024px) {}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {}
+
+@media screen and (max-width: 375px) {
+
+}
+
 @keyframes slowspin {
   0% {
     transform: rotate(0deg);
@@ -115,15 +138,4 @@ a {
     transform: scale(1);
     opacity: 0.9;
   }
-}
-
-.medicoImagem {
-  z-index: 1300;
-}
-.tituloBalao {
-  position: absolute;
-  top: 66px;
-  left: -109px;
-  width: 151px;
-  z-index: 1300;
 }
