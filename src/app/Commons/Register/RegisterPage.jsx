@@ -44,7 +44,7 @@ const RegisterPage = () => {
                     alignItems: 'center',
                     backgroundSize: 'cover',
                     justifyContent: 'center',
-                    backgroundPosition: {xs:'-123px -150px', lg: 'center'},
+                    backgroundPosition: {xs:'-123px -150px', sm: 'center',md: 'center',lg: 'center'},
                     backgroundImage: 'url("/FundoLogin.png")',
                     backgroundRepeat: 'no-repeat',
                     backgroundColor: {xs: "#7be4ff"}
@@ -65,8 +65,7 @@ const RegisterPage = () => {
                             sx={{
                                 height: 'auto',
                                 width: { md: '30vw', lg: '20vw' },
-                                mb: {lg: '30px'},
-                                display: { xs: 'none', md: 'block', lg: 'block' },
+                                display: { xs: 'none', sm: 'none',md: 'block', lg: 'block' },
                                 ml: { lg: '0px' }
 
                             }}
