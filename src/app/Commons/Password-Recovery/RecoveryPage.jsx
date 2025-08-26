@@ -44,23 +44,21 @@ const RecoveryPasswordPage = () => {
                 }}
             >
 
-                <Grid container spacing={0} alignItems="center" justifyContent="center">
+                <Grid container spacing={0} alignItems="end" justifyContent="center">
 
                     {/* Imagem */}
 
                     {/* TODO : Colocar o medico mais pro lado do form */}
 
-                    <Grid size={{ xs: 0, sm: 4, md: 4, lg: 4 }} className='medicoImagem'>
+                    <Grid size={{ xs: 0, sm: 4, md: 4, lg: 5 }} className='medicoImagem'>
                         <Box
                             component="img"
                             alt="Imagem Médico"
-                            src="/RegisterDoctor.png"
+                            src="/RecoveryDoctor.png"
                             sx={{
                                 height: 'auto',
-                                width: { md: '30vw', lg: '20vw' },
-                                display: { xs: 'none', sm: 'none',md: 'block', lg: 'block' },
-                                ml: { lg: '0px' }
-
+                                width: { md: '30vw', lg: '25vw' },
+                                display: { xs: 'none', sm: 'none',md: 'block', lg: 'flex' },
                             }}
                         />
                     </Grid>
