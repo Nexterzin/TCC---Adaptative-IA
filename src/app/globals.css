@@ -100,6 +100,20 @@ a {
   margin-bottom: 10px;
 }
 
+.material-icons.md-18,
+.material-symbols-outlined.md-18
+{ font-size: 18px; }
+.material-icons.md-24,
+.material-symbols-outlined.md-24
+{ font-size: 24px; }
+.material-icons.md-36,
+.material-symbols-outlined.md-36
+{ font-size: 36px; }
+.material-icons.md-48,
+.material-symbols-outlined.md-100
+{ font-size: 100px; }
+
+
 @media screen and (min-width: 1024px) {}
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {}
