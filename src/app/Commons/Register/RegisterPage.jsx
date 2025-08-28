@@ -36,7 +36,7 @@ const RegisterPage = () => {
 
     return (
         <>
-            <Box
+            <Box className='background'
                 sx={{
                     display: 'flex',
                     minWidth: '100vw',
@@ -44,52 +44,61 @@ const RegisterPage = () => {
                     alignItems: 'center',
                     backgroundSize: 'cover',
                     justifyContent: 'center',
-                    backgroundPosition: 'center',
+                    backgroundPosition: {xs:'-123px -150px', sm: 'center',md: 'center',lg: 'center'},
                     backgroundImage: 'url("/FundoLogin.png")',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundColor: {xs: "#7be4ff"}
                 }}
             >
 
-                <Grid container spacing={0} alignItems="center" justifyContent="center" marginRight={'100px'}>
+                <Grid container spacing={0} alignItems="center" justifyContent="center">
 
                     {/* Imagem */}
 
-                    <Grid size={{ xs: 12, md: 1.5 }}>
+                    {/* TODO : Colocar o medico mais pro lado do form */}
+
+                    <Grid size={{ xs: 0, sm: 4, md: 4, lg: 4 }} className='medicoImagem'>
                         <Box
                             component="img"
-                            alt="Imagem Médica"
+                            alt="Imagem Médico"
                             src="/RegisterDoctor.png"
                             sx={{
                                 height: 'auto',
-                                ml: { md: '50px', lg: '190px' },
-                                width: { md: '100%', lg: '190%' },
-                                display: { xs: 'none', md: 'none', lg: 'block' },
+                                width: { md: '30vw', lg: '20vw' },
+                                display: { xs: 'none', sm: 'none',md: 'block', lg: 'block' },
+                                ml: { lg: '0px' }
+
                             }}
                         />
                     </Grid>
 
                     {/* Card de Registre-se como Grid */}
 
-                    <Grid size={{ xs: 12, md: 8 }}>
+                    <Grid size={{ xs: 11, md: 6, lg: 6 }}>
                         <Grid
                             container
-                            spacing={3}
+                            spacing={1}
                             sx={{
-                                p: 4,
+                                p: { xs: 2, sm: 3, md: 4, lg: 6 },
                                 boxShadow: 10,
                                 borderRadius: 3,
                                 background: 'rgba(54, 116, 181, 1)',
-                                width: { md: '80%', xs: '400px', lg: '40%' },
-                                marginLeft: { xs: '50px', md: '60px', lg: '500px' },
+                                display: 'flex',
+                                flexDirection: 'column',
+                                width: { lg: '500px' },
+                                position: 'relative'
+
                             }}
                         >
-                            <Grid size={12}>
+                            <Grid size={12} className="labelForm">
                                 <Typography variant="h4" textAlign="center" fontWeight="bold" color="white">
                                     Registre-se
                                 </Typography>
                             </Grid>
 
-                            <Grid size={12}>
-                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+
+                            <Grid size={12} >
+                                <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
                                     Digite um e-mail ou celular em uso
                                 </Stack>
                                 <TextField
@@ -122,8 +131,9 @@ const RegisterPage = () => {
                                 />
                             </Grid>
 
+
                             <Grid size={12}>
-                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
                                     Digite uma senha
                                 </Stack>
                                 <TextField
@@ -171,7 +181,7 @@ const RegisterPage = () => {
                             </Grid>
 
                             <Grid size={12}>
-                                <Stack color={'rgba(255, 255, 255, 1)'} sx={{ opacity: '0.48' }}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
                                     Como prefere ser chamado?
                                 </Stack>
                                 <TextField
@@ -210,7 +220,7 @@ const RegisterPage = () => {
                                 />
                             </Grid>
 
-                            <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>
                                 <DefaultaButton
                                     onClick={goToLogin}
                                     content={'Avançar'}
@@ -228,6 +238,10 @@ const RegisterPage = () => {
                                 </Grid>
                             </Grid> */}
                         </Grid>
+
+                    </Grid>
+                    <Grid size={{ xs: 0, md: 4, lg: 4 }} className='medicoImagem'>
+
                     </Grid>
                 </Grid>
                 <ToastContainer />

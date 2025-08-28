@@ -155,7 +155,7 @@ const LoginPage = () => {
                                 <Stack direction="row" justifyContent="center" pt={4}>
                                     <Typography color="white">É novo por aqui?</Typography>
                                     <Typography>
-                                        <Link onClick={goToRegister} sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold', pl: 1 }}>
+                                        <Link component="button" onClick={goToRegister} sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold', pl: 1 }}>
                                             Registre-se
                                         </Link>
                                     </Typography>
