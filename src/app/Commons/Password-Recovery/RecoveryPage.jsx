@@ -32,8 +32,7 @@ const RecoveryPasswordPage = () => {
 
     return (
         <>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=lock_open_right" />;
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=lock" />;
+            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=lock,lock_open_right " rel="stylesheet" />
             <Box className='background'
                 sx={{
                     display: 'flex',
@@ -62,7 +61,7 @@ const RecoveryPasswordPage = () => {
                             src="/RecoveryDoctor.png"
                             sx={{
                                 height: 'auto',
-                                width: { md: '30vw', lg: '25vw' },
+                                width: { md: '30vw', lg: '25rem' },
                                 display: { xs: 'none', sm: 'none', md: 'block', lg: 'flex' },
                             }}
                         />
@@ -101,6 +100,32 @@ const RecoveryPasswordPage = () => {
                                     <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
                                         Digite um e-mail ou celular em uso
                                     </Stack>
+                                    <TextField
+                                        fullWidth
+                                        sx={{
+                                            "& .MuiOutlinedInput-root": {
+                                                borderRadius: "10px",
+                                                backgroundColor: 'transparent',
+                                                color: "#fff",
+                                                "& fieldset": {
+                                                    borderColor: "#fff",
+                                                },
+                                                "&:hover fieldset": {
+                                                    borderColor: "#fff",
+                                                    opacity: 0.48
+                                                },
+                                                "&.Mui-focused fieldset": {
+                                                    borderColor: "#fff",
+                                                },
+                                            },
+                                            input: {
+                                                color: "#fff",
+                                            },
+                                            "& .MuiInputLabel-root": {
+                                                color: "#fff",
+                                            },
+                                        }}
+                                    />
 
                                 </Grid>
 
@@ -109,6 +134,32 @@ const RecoveryPasswordPage = () => {
                                     <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
                                         Digite uma senha
                                     </Stack>
+                                    <TextField
+                                        fullWidth
+                                        sx={{
+                                            "& .MuiOutlinedInput-root": {
+                                                borderRadius: "10px",
+                                                backgroundColor: 'transparent',
+                                                color: "#fff",
+                                                "& fieldset": {
+                                                    borderColor: "#fff",
+                                                },
+                                                "&:hover fieldset": {
+                                                    borderColor: "#fff",
+                                                    opacity: 0.48
+                                                },
+                                                "&.Mui-focused fieldset": {
+                                                    borderColor: "#fff",
+                                                },
+                                            },
+                                            input: {
+                                                color: "#fff",
+                                            },
+                                            "& .MuiInputLabel-root": {
+                                                color: "#fff",
+                                            },
+                                        }}
+                                    />
 
                                 </Grid>
 
@@ -184,7 +235,7 @@ const RecoveryPasswordPage = () => {
 
                                 <Grid size={12}>
                                     <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
-                                        
+
                                     </Stack>
 
                                 </Grid>
@@ -193,13 +244,13 @@ const RecoveryPasswordPage = () => {
 
                                 <Grid size={12}>
                                     <Box sx={{ width: '100%', py: 2 }}>
-                                        
+
                                     </Box>
                                 </Grid>
 
                                 <Grid size={12}>
                                     <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
-                                       
+
                                     </Stack>
 
                                 </Grid>
