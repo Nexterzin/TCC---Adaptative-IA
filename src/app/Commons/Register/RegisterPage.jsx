@@ -3,8 +3,9 @@
 import '@/app/globals.css'
 import 'react-toastify/dist/ReactToastify.css';
 
+import DefaultaButton from '../Component/ComponentButton/DefaultButton';
+
 import XIcon from '@mui/icons-material/X';
-import SendIcon from '@mui/icons-material/Send';
 import GoogleIcon from '@mui/icons-material/Google';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -14,24 +15,56 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
 import { Box, TextField, Typography, Grid, Link, Stack, Divider } from "@mui/material";
-import DefaultaButton from '../Component/ComponentButton/DefaultButton';
 
 const RegisterPage = () => {
     const router = useRouter();
 
+    const [nome, setNome] = useState('');
     const [senha, setSenha] = useState('');
-    const [usuario, setUsuario] = useState('');
+    const [email, setEmail] = useState('');
+    const [senhaAgain, setSenhaAgain] = useState('');
 
-    const goToLogin = () => {
-        router.push('/PagesRouter/Login');
-    };
+    const handleRegister = async () => {
+        if (!nome) {
+            toast.error("Por favor, preencha seu nome.");
+            return;
+        }
+        if (!email) {
+            toast.error("Por favor, preencha o seu e-mail.");
+            return;
+        }
+        if (!senha) {
+            toast.error("Por favor, preencha sua senha.");
+            return;
+        }
 
-    const goToRegister = () => {
-        router.push('/PagesRouter/Register');
-    };
+        if (senha != senhaAgain) {
+            toast.warning('As senhas não estão iguais.')
+        }
 
-    const goToRecoveryPassword = () => {
-        router.push('/PagesRouter/Password-recovery');
+        try {
+            const response = await fetch('http://localhost:8080/api/usuarios/registrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nome, email, senha }),
+            });
+
+            if (response.ok) {
+                toast.success("Usuário registrado com sucesso!");
+                setTimeout(() => {
+                    router.push('/PagesRouter/Login');
+                }, 3000);
+
+            } else {
+                const errorData = await response.json();
+                toast.error(errorData.message || "Falha no registro. Por favor, tente novamente.");
+            }
+        } catch (error) {
+            console.error("Erro ao registrar:", error);
+            toast.error("Ocorreu um erro ao tentar se conectar ao servidor.");
+        }
     };
 
     return (
@@ -44,19 +77,14 @@ const RegisterPage = () => {
                     alignItems: 'center',
                     backgroundSize: 'cover',
                     justifyContent: 'center',
-                    backgroundPosition: {xs:'-123px -150px', sm: 'center',md: 'center',lg: 'center'},
+                    backgroundPosition: { xs: '-123px -150px', sm: 'center', md: 'center', lg: 'center' },
                     backgroundImage: 'url("/FundoLogin.png")',
                     backgroundRepeat: 'no-repeat',
-                    backgroundColor: {xs: "#7be4ff"}
+                    backgroundColor: { xs: "#7be4ff" }
                 }}
             >
 
                 <Grid container spacing={0} alignItems="center" justifyContent="center">
-
-                    {/* Imagem */}
-
-                    {/* TODO : Colocar o medico mais pro lado do form */}
-
                     <Grid size={{ xs: 0, sm: 4, md: 4, lg: 4 }} className='medicoImagem'>
                         <Box
                             component="img"
@@ -65,14 +93,12 @@ const RegisterPage = () => {
                             sx={{
                                 height: 'auto',
                                 width: { md: '30vw', lg: '20vw' },
-                                display: { xs: 'none', sm: 'none',md: 'block', lg: 'block' },
+                                display: { xs: 'none', sm: 'none', md: 'block', lg: 'block' },
                                 ml: { lg: '0px' }
 
                             }}
                         />
                     </Grid>
-
-                    {/* Card de Registre-se como Grid */}
 
                     <Grid size={{ xs: 11, md: 6, lg: 6 }}>
                         <Grid
@@ -96,15 +122,14 @@ const RegisterPage = () => {
                                 </Typography>
                             </Grid>
 
-
                             <Grid size={12} >
                                 <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
                                     Digite um e-mail ou celular em uso
                                 </Stack>
                                 <TextField
                                     fullWidth
-                                    value={usuario}
-                                    onChange={(e) => setUsuario(e.target.value)}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
@@ -131,7 +156,6 @@ const RegisterPage = () => {
                                 />
                             </Grid>
 
-
                             <Grid size={12}>
                                 <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
                                     Digite uma senha
@@ -143,7 +167,7 @@ const RegisterPage = () => {
                                     onChange={(e) => setSenha(e.target.value)}
                                     onKeyDown={(event) => {
                                         if (event.key === 'Enter') {
-                                            goToLogin();
+                                            handleRegister();
                                         }
                                     }}
                                     sx={{
@@ -172,7 +196,45 @@ const RegisterPage = () => {
                                 />
                             </Grid>
 
-                            {/* Linha divisoria */}
+                            <Grid size={12}>
+                                <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
+                                    Repita sua senha
+                                </Stack>
+                                <TextField
+                                    fullWidth
+                                    value={senhaAgain}
+                                    type="password"
+                                    onChange={(e) => setSenhaAgain(e.target.value)}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') {
+                                            handleRegister();
+                                        }
+                                    }}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "10px",
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#fff",
+                                                opacity: 0.48
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#fff",
+                                            },
+                                        },
+                                        input: {
+                                            color: "#fff",
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "#fff",
+                                        },
+                                    }}
+                                />
+                            </Grid>
 
                             <Grid size={12}>
                                 <Box sx={{ width: '100%', py: 2 }}>
@@ -186,14 +248,8 @@ const RegisterPage = () => {
                                 </Stack>
                                 <TextField
                                     fullWidth
-                                    value={senha}
-                                    type="password"
-                                    onChange={(e) => setSenha(e.target.value)}
-                                    onKeyDown={(event) => {
-                                        if (event.key === 'Enter') {
-                                            goToLogin();
-                                        }
-                                    }}
+                                    value={nome}
+                                    onChange={(e) => setNome(e.target.value)}
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             borderRadius: "10px",
@@ -220,9 +276,9 @@ const RegisterPage = () => {
                                 />
                             </Grid>
 
-                            <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>
+                            <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
                                 <DefaultaButton
-                                    onClick={goToLogin}
+                                    onClick={handleRegister}
                                     content={'Avançar'}
                                     widthButton='380px'
                                 />
@@ -231,7 +287,7 @@ const RegisterPage = () => {
                             {/* <Grid size={12}>
                                 <Grid container spacing={2} justifyContent="center">
                                     {[FacebookIcon, InstagramIcon, GoogleIcon, XIcon, LinkedInIcon].map((Icon, index) => (
-                                        <Grid  key={index}>
+                                        <Grid key={index}>
                                             <Icon sx={{ fontSize: 40, cursor: 'pointer', color: 'black' }} />
                                         </Grid>
                                     ))}
@@ -241,7 +297,6 @@ const RegisterPage = () => {
 
                     </Grid>
                     <Grid size={{ xs: 0, md: 4, lg: 4 }} className='medicoImagem'>
-
                     </Grid>
                 </Grid>
                 <ToastContainer />
@@ -250,4 +305,4 @@ const RegisterPage = () => {
     );
 }
 
-export default RegisterPage
+export default RegisterPage;
