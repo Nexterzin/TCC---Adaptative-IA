@@ -1,5 +1,7 @@
-/* Css padrão do site */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');/* Css padrão do site */
 :root {
+  --font-roboto:"Roboto";
   --background: #ffffff;
   --foreground: #171717;
   font-family: var(--font-poppins), sans-serif;
@@ -23,7 +25,7 @@ body {
 
 body {
   margin: 0;
-  font-family: var(--font-poppins), sans-serif;
+  font-family: var(--font-roboto), sans-serif;
 }
 
 * {
@@ -51,7 +53,10 @@ a {
 
 .spin-wrapper {
   animation: slowspin 4s linear infinite;
+  justify-content: center;
+  align-items: center;
   display: contents;
+  position: fixed;
 }
 
 .box-1 {
@@ -80,6 +85,41 @@ a {
   border-radius: 50%;
   box-shadow:
     inset 2px 2px 5px rgba(0, 0, 0, 0.05),
+}
+
+.medicoImagem {
+  z-index: 1300;
+}
+
+.tituloBalao {
+  position: absolute;
+  z-index: 1300;
+}
+
+.labelForm{
+  margin-bottom: 10px;
+}
+
+.material-icons.md-18,
+.material-symbols-outlined.md-18
+{ font-size: 18px; }
+.material-icons.md-24,
+.material-symbols-outlined.md-24
+{ font-size: 24px; }
+.material-icons.md-36,
+.material-symbols-outlined.md-36
+{ font-size: 36px; }
+.material-icons.md-48,
+.material-symbols-outlined.md-100
+{ font-size: 100px; }
+
+
+@media screen and (min-width: 1024px) {}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {}
+
+@media screen and (max-width: 375px) {
+
 }
 
 @keyframes slowspin {
