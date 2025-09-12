@@ -1,39 +1,54 @@
 'use client'
 
-import './globals.css';
-import 'react-toastify/dist/ReactToastify.css';
+import './globals.css'
+import 'react-toastify/dist/ReactToastify.css'
 
-// import XIcon from '@mui/icons-material/X';
-// import SendIcon from '@mui/icons-material/Send';
-// import GoogleIcon from '@mui/icons-material/Google';
-// import LinkedInIcon from '@mui/icons-material/LinkedIn';
-// import FacebookIcon from '@mui/icons-material/Facebook';
-// import InstagramIcon from '@mui/icons-material/Instagram';
+// import XIcon from '@mui/icons-material/X'
+// import SendIcon from '@mui/icons-material/Send'
+// import GoogleIcon from '@mui/icons-material/Google'
+// import LinkedInIcon from '@mui/icons-material/LinkedIn'
+// import FacebookIcon from '@mui/icons-material/Facebook'
+// import InstagramIcon from '@mui/icons-material/Instagram'
 import DefaultaButton from './Commons/Component/ComponentButton/DefaultButton';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { toast, ToastContainer } from 'react-toastify';
-import { Box, TextField, Typography, Grid, Link, Stack } from "@mui/material";
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { toast, ToastContainer } from 'react-toastify'
+import { Box, TextField, Typography, Grid, Link, Stack } from "@mui/material"
 
 const LoginPage = () => {
     const router = useRouter();
 
-    const [senha, setSenha] = useState('');
-    const [usuario, setUsuario] = useState('');
+    const [senha, setSenha] = useState('')
+    const [usuario, setUsuario] = useState('')
+    const [data, setData] = useState()
 
-    const goToHome = () => {
-        if (usuario === 'bruno' && senha === 'admin') {
-            router.push('/PagesRouter/Home');
-        } else {
-            toast.warning("Usuário ou senha inválidos!", {
-                style: {
-                    backgroundColor: '#333',
-                    color: '#fdd835',
-                    fontWeight: 'bold',
-                    fontSize: '16px',
-                }
+    const handleLogin = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/api/usuarios/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: usuario,
+                    senha: senha
+                }),
             });
+
+            if (response.ok) {
+                const data = await response.text();
+                toast.success(data, {
+                    style: { backgroundColor: '#4caf50', color: 'white', fontWeight: 'bold' }
+                });
+                router.push('/PagesRouter/Home');
+            } else {
+                const errorMsg = await response.text();
+                toast.error(errorMsg);
+            }
+
+        } catch (error) {
+            toast.error('Erro ao conectar com o servidor');
         }
     };
 
@@ -126,7 +141,7 @@ const LoginPage = () => {
                                     onChange={(e) => setSenha(e.target.value)}
                                     onKeyDown={(event) => {
                                         if (event.key === 'Enter') {
-                                            goToHome();
+                                            handleLogin();
                                         }
                                     }}
                                     sx={{
@@ -146,7 +161,7 @@ const LoginPage = () => {
                                 <Box display="flex" justifyContent="center" mt={2}>
                                     <DefaultaButton
                                         height={45}
-                                        onClick={goToHome}
+                                        onClick={handleLogin}
                                         content={'Avançar'}
                                         widthButton="300px"
                                     />

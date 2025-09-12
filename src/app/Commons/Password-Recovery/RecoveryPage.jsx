@@ -89,7 +89,7 @@ return (
 
                         <Grid size={12} className="labelForm">
                             <Typography variant="h4" textAlign="center" fontWeight="bold" color="white">
-                                <span class="material-symbols-outlined md-100">
+                                <span className="material-symbols-outlined md-100">
                                     lock
                                 </span>
                             </Typography>
@@ -164,7 +164,7 @@ return (
 
                         <Grid size={12} className="labelForm">
                             <Typography variant="h4" textAlign="center" fontWeight="bold" color="white">
-                                <span class="material-symbols-outlined md-100">
+                                <span className="material-symbols-outlined md-100">
                                     lockdd
                                 </span>
                             </Typography>
