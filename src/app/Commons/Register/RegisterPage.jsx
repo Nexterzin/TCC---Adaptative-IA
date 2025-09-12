@@ -14,7 +14,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
-import { Box, TextField, Typography, Grid, Link, Stack, Divider } from "@mui/material";
+import { Box, TextField, Typography, Grid, Stack, Divider } from "@mui/material";
 
 const RegisterPage = () => {
     const router = useRouter();
