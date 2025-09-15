@@ -3,64 +3,74 @@
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.css'
 
-// import XIcon from '@mui/icons-material/X'
-// import SendIcon from '@mui/icons-material/Send'
-// import GoogleIcon from '@mui/icons-material/Google'
-// import LinkedInIcon from '@mui/icons-material/LinkedIn'
-// import FacebookIcon from '@mui/icons-material/Facebook'
-// import InstagramIcon from '@mui/icons-material/Instagram'
-import DefaultaButton from './Commons/Component/ComponentButton/DefaultButton';
+import DefaultaButton from './Commons/Component/ComponentButton/DefaultButton'
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { toast, ToastContainer } from 'react-toastify'
-import { Box, TextField, Typography, Grid, Link, Stack } from "@mui/material"
+import {
+    Box,
+    TextField,
+    Typography,
+    Grid,
+    Link,
+    Stack,
+} from '@mui/material'
+import Loading from './Commons/Component/Loading/loading'
 
 const LoginPage = () => {
-    const router = useRouter();
+    const router = useRouter()
 
     const [senha, setSenha] = useState('')
-    const [usuario, setUsuario] = useState('')
-    const [data, setData] = useState()
+    const [email, setUsuario] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const handleLogin = async () => {
+        setLoading(true)
+
         try {
             const response = await fetch('http://localhost:8080/api/usuarios/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: usuario,
-                    senha: senha
-                }),
-            });
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, senha: senha }),
+            })
 
             if (response.ok) {
-                const data = await response.text();
-                toast.success(data, {
-                    style: { backgroundColor: '#4caf50', color: 'white', fontWeight: 'bold' }
-                });
-                router.push('/PagesRouter/Home');
-            } else {
-                const errorMsg = await response.text();
-                toast.error(errorMsg);
-            }
+                toast.success('Usuário logado com sucesso!')
 
+                setTimeout(() => {
+                    router.push('/PagesRouter/Home')
+                }, 1000)
+            } else {
+                const errorMsg = await response.text()
+                toast.error(errorMsg)
+                setLoading(false)
+            }
         } catch (error) {
-            toast.error('Erro ao conectar com o servidor');
+            toast.error('Erro ao conectar com o servidor')
+            setLoading(false)
         }
-    };
+    }
 
     const goToRegister = () => {
-        router.push('/PagesRouter/Register');
-    };
+        setLoading(true)
+
+        setTimeout(() => {
+            router.push('/PagesRouter/Register')
+            setLoading(true)
+        }, 1000);
+    }
 
     const goToRecoveryPassword = () => {
-        router.push('/PagesRouter/Password-recovery');
-    };
+        setLoading(true)
+
+        setTimeout(() => {
+            router.push('/PagesRouter/Password-recovery')
+        }, 1000);
+    }
 
     return (
+
         <>
             <Box
                 sx={{
@@ -72,6 +82,7 @@ const LoginPage = () => {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundImage: 'url("/FundoLogin.png")',
+                    position: 'relative', // necessário para overlay funcionar
                 }}
             >
                 <Grid container spacing={0} alignItems="center" justifyContent="center" sx={{ px: 2 }}>
@@ -103,7 +114,13 @@ const LoginPage = () => {
                                 margin: '0 auto',
                             }}
                         >
-                            <Typography variant="h4" textAlign="center" fontWeight="bold" color="white" mb={2}>
+                            <Typography
+                                variant="h4"
+                                textAlign="center"
+                                fontWeight="bold"
+                                color="white"
+                                mb={2}
+                            >
                                 Entrar
                             </Typography>
 
@@ -113,7 +130,7 @@ const LoginPage = () => {
                                 </Stack>
                                 <TextField
                                     fullWidth
-                                    value={usuario}
+                                    value={email}
                                     placeholder="Insira seu E-mail"
                                     onChange={(e) => setUsuario(e.target.value)}
                                     sx={{
@@ -141,7 +158,7 @@ const LoginPage = () => {
                                     onChange={(e) => setSenha(e.target.value)}
                                     onKeyDown={(event) => {
                                         if (event.key === 'Enter') {
-                                            handleLogin();
+                                            handleLogin()
                                         }
                                     }}
                                     sx={{
@@ -170,7 +187,11 @@ const LoginPage = () => {
                                 <Stack direction="row" justifyContent="center" pt={4}>
                                     <Typography color="white">É novo por aqui?</Typography>
                                     <Typography>
-                                        <Link component="button" onClick={goToRegister} sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold', pl: 1 }}>
+                                        <Link
+                                            component="button"
+                                            onClick={goToRegister}
+                                            sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold', pl: 1 }}
+                                        >
                                             Registre-se
                                         </Link>
                                     </Typography>
@@ -188,25 +209,34 @@ const LoginPage = () => {
                                     </Typography>
                                 </Stack>
                             </Stack>
-                            {/* Redes sociais (comentado) */}
-                            {/* 
-                                <Grid item xs={12}>
-                                    <Grid container spacing={2} justifyContent="center">
-                                    {[FacebookIcon, InstagramIcon, GoogleIcon, XIcon, LinkedInIcon].map((Icon, index) => (
-                                        <Grid item key={index}>
-                                        <Icon sx={{ fontSize: 40, cursor: 'pointer', color: 'black' }} />
-                                        </Grid>
-                                    ))}
-                                    </Grid>
-                                </Grid> 
-                            */}
                         </Box>
                     </Grid>
                 </Grid>
+
+                {/* ✅ Overlay de loading */}
+                {loading && (
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            zIndex: 9999,
+                        }}
+                    >
+                        <Loading />
+                    </Box>
+                )}
             </Box>
+
             <ToastContainer />
         </>
-    );
+    )
 }
 
-export default LoginPage;
+export default LoginPage
