@@ -25,8 +25,10 @@ const PageUserRecovery = () => {
     const handleReset = async () => {
         setLoading(false)
 
+         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
         try {
-            const res = await fetch("http://localhost:8080/api/usuarios/resetar-senha", {
+            const res = await fetch(`${apiUrl}/api/usuarios/resetar-senha`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token, novaSenha })

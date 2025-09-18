@@ -24,8 +24,10 @@ const RecoveryPasswordPage = () => {
     const handleRecover = async () => {
         setLoading(true)
 
+         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
         try {
-            const res = await fetch("http://localhost:8080/api/usuarios/recuperar-senha", {
+            const res = await fetch(`${apiUrl}/api/usuarios/recuperar-senha`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })
