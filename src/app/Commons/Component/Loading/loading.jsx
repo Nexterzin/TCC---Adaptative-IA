@@ -1,7 +1,5 @@
 'use client'
 
-import './Loading.css'
-
 import { Stack } from '@mui/material'
 
 const Loading = () => {
