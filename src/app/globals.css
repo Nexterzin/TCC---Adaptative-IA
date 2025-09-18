@@ -1,6 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');/* Css padrão do site */
 :root {
+  --font-roboto:"Roboto";
   --background: #ffffff;
   --foreground: #171717;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,22 +16,21 @@
 
 html,
 body {
-  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: var(--font-roboto), sans-serif;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
 }
 
 a {
@@ -38,5 +41,115 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* From Uiverse.io by Akshdeep74644 */
+.loader {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spin-wrapper {
+  animation: slowspin 4s linear infinite;
+  justify-content: center;
+  align-items: center;
+  display: contents;
+  position: fixed;
+}
+
+.box-1 {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  background: conic-gradient(from 0deg,
+      rgba(0, 225, 255, 0.3),
+      rgba(255, 255, 255, 0.6),
+      rgba(0, 57, 110, 0.3),
+      rgba(0, 225, 255, 0.3));
+  border-radius: 50%;
+  animation: pulse 3.6s ease-in-out infinite;
+  filter: blur(1px);
+  box-shadow:
+    0 0 80px rgba(0, 225, 255, 0.4),
+    0 0 30px rgba(255, 255, 255, 0.3),
+    0 0 100px rgba(0, 57, 110, 0.2);
+}
+
+.box-1::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  background: rgb(119, 177, 238);
+  border-radius: 50%;
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.05),
+}
+
+.medicoImagem {
+  z-index: 1300;
+}
+
+.tituloBalao {
+  position: absolute;
+  z-index: 1300;
+}
+
+.labelForm{
+  margin-bottom: 10px;
+}
+
+.material-icons.md-18,
+.material-symbols-outlined.md-18
+{ font-size: 18px; }
+.material-icons.md-24,
+.material-symbols-outlined.md-24
+{ font-size: 24px; }
+.material-icons.md-36,
+.material-symbols-outlined.md-36
+{ font-size: 36px; }
+.material-icons.md-48,
+.material-symbols-outlined.md-100
+{ font-size: 100px; }
+
+
+@media screen and (min-width: 1024px) {}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {}
+
+@media screen and (max-width: 375px) {
+
+}
+
+@keyframes slowspin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  70% {
+    transform: scale(1.2);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
   }
 }
