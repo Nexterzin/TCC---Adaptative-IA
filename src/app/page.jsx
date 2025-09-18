@@ -28,12 +28,14 @@ const LoginPage = () => {
     const handleLogin = async () => {
         setLoading(true)
 
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
         try {
-            const response = await fetch('http://localhost:8080/api/usuarios/login', {
+            const response = await fetch(`${apiUrl}/api/usuarios/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email, senha: senha }),
-            })
+            });
 
             if (response.ok) {
                 toast.success('Usuário logado com sucesso!')

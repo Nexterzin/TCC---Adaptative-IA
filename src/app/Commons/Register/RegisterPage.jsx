@@ -43,7 +43,10 @@ const RegisterPage = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/api/usuarios/registrar', {
+
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+            const response = await fetch(`${apiUrl}/api/usuarios/registrar`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
