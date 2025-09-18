@@ -145,7 +145,7 @@ const RecoveryPasswordPage = () => {
                             </Grid>
 
 
-                        </Grid>
+                                </Grid>
 
 
                     </Grid>
