@@ -1,6 +1,6 @@
 'use client'
 
-import './Loading.css'
+import './loading.css'
 
 import { Stack } from '@mui/material'
 
