@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
-import { toast, ToastContainer } from "react-toastify";
-import { Box, TextField, Typography, Grid, Stack } from "@mui/material";
-import DefaultaButton from "../Commons/Component/ComponentButton/DefaultButton";
-import styles from "./PageUserRecovery.module.css";
-import Loading from "../Commons/Component/Loading/loading";
+import { useState } from "react"
+import { Box } from "@mui/material"
+import { toast, ToastContainer } from "react-toastify"
+import { useSearchParams, useRouter } from "next/navigation"
+
+import styles from "./PageUserRecovery.module.css"
+import Loading from "../Commons/Component/Loading/loading"
 
 const ResetPasswordForm = () => {
     const searchParams = useSearchParams();
@@ -32,7 +32,10 @@ const ResetPasswordForm = () => {
 
             if (res.ok) {
                 toast.success(data);
-                setTimeout(() => router.push("/PagesRouter/Login"), 2000);
+                setTimeout(() => {
+                    router.push("/PagesRouter/Login")
+                    setLoading(false)
+                }, 2000);
             } else {
                 toast.error(data);
             }
@@ -47,7 +50,7 @@ const ResetPasswordForm = () => {
         <>
             <Box className={styles.recoveryPage}>
             </Box>
-            {loading && ( <Loading /> )}
+            {loading && (<Loading />)}
             <ToastContainer />
         </>
     );
