@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from "react"
-import { Box } from "@mui/material"
 import { toast, ToastContainer } from "react-toastify"
 import { useSearchParams, useRouter } from "next/navigation"
+import { Box, Grid, Stack, TextField, Typography } from "@mui/material"
 
 import styles from "./PageUserRecovery.module.css"
 import Loading from "../Commons/Component/Loading/loading"
+import DefaultaButton from "../Commons/Component/ComponentButton/DefaultButton"
 
 const ResetPasswordForm = () => {
     const searchParams = useSearchParams();
@@ -47,10 +48,92 @@ const ResetPasswordForm = () => {
     };
 
     return (
-        <>
+         <>
             <Box className={styles.recoveryPage}>
+                <Grid container spacing={0} alignItems="center" justifyContent="center" sx={{ px: 2 }}>
+                    <Grid item xs={12} md={6} alignItems="center" justifyContent="center">
+                        <Box
+                            sx={{
+                                p: 4,
+                                boxShadow: 10,
+                                borderRadius: 3,
+                                background: 'rgba(54, 116, 181, 1)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                margin: '0 auto',
+                            }}
+                        >
+                            <Typography
+                                variant="h4"
+                                textAlign="center"
+                                fontWeight="bold"
+                                color="white"
+                                mb={2}
+                            >
+                                Redefinir Senha
+                            </Typography>
+
+                            <Stack width="100%">
+                                <Stack color="rgba(255, 255, 255, 1)" sx={{ opacity: 0.48 }}>
+                                    Digite a nova senha
+                                </Stack>
+                                <TextField
+                                    fullWidth
+                                    type="password"
+                                    value={novaSenha}
+                                    placeholder="Digite a nova senha"
+                                    onChange={(e) => setNovaSenha(e.target.value)}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter') {
+                                            handleReset()
+                                        }
+                                    }}
+                                    sx={{
+                                        mb: '20px',
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "10px",
+                                            backgroundColor: 'transparent',
+                                            color: "#fff",
+                                            "& fieldset": { borderColor: "#fff" },
+                                            "&:hover fieldset": { borderColor: "#fff", opacity: 0.48 },
+                                            "&.Mui-focused fieldset": { borderColor: "#fff" },
+                                        },
+                                        input: { color: "#fff" },
+                                    }}
+                                />
+
+                                <Box display="flex" justifyContent="center" mt={2}>
+                                    <DefaultaButton
+                                        height={45}
+                                        onClick={handleReset}
+                                        content={'Confirmar'}
+                                        widthButton="300px"
+                                    />
+                                </Box>
+                            </Stack>
+                        </Box>
+                    </Grid>
+                </Grid>
             </Box>
-            {loading && (<Loading />)}
+            {loading && (
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        zIndex: 9999,
+                    }}
+                >
+                    <Loading />
+                </Box>
+            )}
+
             <ToastContainer />
         </>
     );
