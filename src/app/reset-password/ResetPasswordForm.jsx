@@ -33,10 +33,8 @@ const ResetPasswordForm = () => {
 
             if (res.ok) {
                 toast.success(data);
-                setTimeout(() => {
-                    router.push("/PagesRouter/Login")
-                    setLoading(false)
-                }, 2000);
+                router.push("/PagesRouter/Login")
+                setLoading(false)
             } else {
                 toast.error(data);
             }
@@ -48,7 +46,7 @@ const ResetPasswordForm = () => {
     };
 
     return (
-         <>
+        <>
             <Box className={styles.recoveryPage}>
                 <Grid container spacing={0} alignItems="center" justifyContent="center" sx={{ px: 2 }}>
                     <Grid item xs={12} md={6} alignItems="center" justifyContent="center">
