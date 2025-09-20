@@ -40,6 +40,7 @@ const RegisterPage = () => {
 
         if (senha != senhaAgain) {
             toast.warning('As senhas não estão iguais.')
+            return
         }
 
         try {

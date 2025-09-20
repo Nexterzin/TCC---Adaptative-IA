@@ -19,13 +19,13 @@ const RecoveryPasswordPage = () => {
     const [loading, setLoading] = useState(false)
 
     const goToLogin = () => {
-        router.push('/PagesRouter/Login');
+
     };
 
     const handleRecover = async () => {
         setLoading(true)
 
-         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
         try {
             const res = await fetch(`${apiUrl}/api/usuarios/recuperar-senha`, {
@@ -34,13 +34,14 @@ const RecoveryPasswordPage = () => {
                 body: JSON.stringify({ email })
             });
 
-            const data = await res.text();
+           
 
             if (res.ok) {
-                toast.success(data);
-                goToLogin();
-                setLoading(false)
                 toast.success('E-mail de recuperação de senha enviado!')
+                setTimeout(() => {
+                    setLoading(false)
+                    router.push('/PagesRouter/Login');
+                }, 3000);
             } else {
                 setLoading(false)
                 toast.error('E-mail de recuperação de senha ja enviado ou erro no servidor!')
@@ -146,7 +147,7 @@ const RecoveryPasswordPage = () => {
                             </Grid>
 
 
-                                </Grid>
+                        </Grid>
 
 
                     </Grid>
