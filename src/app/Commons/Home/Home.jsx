@@ -1,11 +1,11 @@
 'use client'
 
 import '@/app/globals.css'
+import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
 import { useRef, useState } from 'react';
 import { Box, Stack, Typography, CircularProgress } from "@mui/material"
 
-import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
 const mockPredictionData = [
     {

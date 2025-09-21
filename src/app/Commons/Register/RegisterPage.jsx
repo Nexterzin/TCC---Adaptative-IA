@@ -1,20 +1,14 @@
 'use client'
 
 import '@/app/globals.css'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
+import Loading from '../Component/Loading/loading'
+import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
-import DefaultaButton from '../Component/ComponentButton/DefaultButton';
-
-import XIcon from '@mui/icons-material/X';
-import GoogleIcon from '@mui/icons-material/Google';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { toast, ToastContainer } from 'react-toastify';
-import { Box, TextField, Typography, Grid, Stack, Divider } from "@mui/material";
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { toast, ToastContainer } from 'react-toastify'
+import { Box, TextField, Typography, Grid, Stack, Divider } from "@mui/material"
 
 const RegisterPage = () => {
     const router = useRouter();
@@ -22,28 +16,35 @@ const RegisterPage = () => {
     const [nome, setNome] = useState('');
     const [senha, setSenha] = useState('');
     const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false)
     const [senhaAgain, setSenhaAgain] = useState('');
 
     const handleRegister = async () => {
+        setLoading(true)
+
         if (!nome) {
+            setLoading(false)
             toast.error("Por favor, preencha seu nome.");
             return;
         }
         if (!email) {
+            setLoading(false)
             toast.error("Por favor, preencha o seu e-mail.");
             return;
         }
         if (!senha) {
+            setLoading(false)
             toast.error("Por favor, preencha sua senha.");
             return;
         }
 
         if (senha != senhaAgain) {
+            setLoading(false)
             toast.warning('As senhas não estão iguais.')
+            return
         }
 
         try {
-
             const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
             const response = await fetch(`${apiUrl}/api/usuarios/registrar`, {
@@ -57,14 +58,17 @@ const RegisterPage = () => {
             if (response.ok) {
                 toast.success("Usuário registrado com sucesso!");
                 setTimeout(() => {
+                    setLoading(false)
                     router.push('/PagesRouter/Login');
-                }, 3000);
+                }, 2000);
 
             } else {
+                setLoading(false)
                 const errorData = await response.json();
                 toast.error(errorData.message || "Falha no registro. Por favor, tente novamente.");
             }
         } catch (error) {
+            setLoading(false)
             console.error("Erro ao registrar:", error);
             toast.error("Ocorreu um erro ao tentar se conectar ao servidor.");
         }
@@ -127,7 +131,7 @@ const RegisterPage = () => {
 
                             <Grid size={12} >
                                 <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
-                                    Digite um e-mail ou celular em uso
+                                    Digite um e-mail
                                 </Stack>
                                 <TextField
                                     fullWidth
@@ -286,16 +290,6 @@ const RegisterPage = () => {
                                     widthButton='380px'
                                 />
                             </Grid>
-
-                            {/* <Grid size={12}>
-                                <Grid container spacing={2} justifyContent="center">
-                                    {[FacebookIcon, InstagramIcon, GoogleIcon, XIcon, LinkedInIcon].map((Icon, index) => (
-                                        <Grid key={index}>
-                                            <Icon sx={{ fontSize: 40, cursor: 'pointer', color: 'black' }} />
-                                        </Grid>
-                                    ))}
-                                </Grid>
-                            </Grid> */}
                         </Grid>
 
                     </Grid>
@@ -304,6 +298,25 @@ const RegisterPage = () => {
                 </Grid>
                 <ToastContainer />
             </Box >
+
+            {loading && (
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        zIndex: 9999,
+                    }}
+                >
+                    <Loading />
+                </Box>
+            )}
         </>
     );
 }

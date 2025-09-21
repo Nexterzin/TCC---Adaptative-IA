@@ -1,15 +1,16 @@
 'use client'
 
 import '@/app/globals.css'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { toast, ToastContainer } from 'react-toastify';
-import { Box, TextField, Typography, Grid, Link, Stack, Divider } from "@mui/material";
-import DefaultaButton from '../Component/ComponentButton/DefaultButton';
-import LockOutlineIcon from '@mui/icons-material/LockOutline';
-import Loading from '../Component/Loading/loading';
+import { useState } from "react"
+import { toast } from 'react-toastify'
+import { useRouter } from "next/navigation"
+import { Box, TextField, Grid, Stack } from "@mui/material"
+
+import Loading from '../Component/Loading/loading'
+import LockOutlineIcon from '@mui/icons-material/LockOutline'
+import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
 const RecoveryPasswordPage = () => {
     const router = useRouter();
@@ -17,14 +18,10 @@ const RecoveryPasswordPage = () => {
     const [email, setEmail] = useState('')
     const [loading, setLoading] = useState(false)
 
-    const goToLogin = () => {
-        router.push('/PagesRouter/Login');
-    };
-
     const handleRecover = async () => {
         setLoading(true)
 
-         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
         try {
             const res = await fetch(`${apiUrl}/api/usuarios/recuperar-senha`, {
@@ -36,20 +33,20 @@ const RecoveryPasswordPage = () => {
             const data = await res.text();
 
             if (res.ok) {
-                toast.success(data);
-                goToLogin();
-                setLoading(false)
                 toast.success('E-mail de recuperação de senha enviado!')
+                setTimeout(() => {
+                    setLoading(false)
+                    router.push('/PagesRouter/Login');
+                }, 2000);
             } else {
                 setLoading(false)
                 toast.error('E-mail de recuperação de senha ja enviado ou erro no servidor!')
             }
         } catch (error) {
-            toast.error("Erro ao enviar solicitação.");
             setLoading(false)
+            toast.error("Erro ao enviar solicitação.");
         }
     };
-
 
     return (
         <>
@@ -70,7 +67,6 @@ const RecoveryPasswordPage = () => {
             >
 
                 <Grid container spacing={0} alignItems="end" justifyContent="center">
-                    {/* Imagem */}
                     <Grid size={{ xs: 0, sm: 4, md: 4, lg: 5 }} className='medicoImagem'>
                         <Box
                             component="img"
@@ -83,8 +79,6 @@ const RecoveryPasswordPage = () => {
                             }}
                         />
                     </Grid>
-
-                    {/* Card de Registre-se como Grid */}
 
                     <Grid size={{ xs: 11, md: 6, lg: 6 }} >
 
@@ -107,7 +101,6 @@ const RecoveryPasswordPage = () => {
                             <Grid container justifyContent="center" alignContent="center">
                                 <LockOutlineIcon sx={{ fontSize: 80 }} /> {/* aumenta o tamanho para 40px */}
                             </Grid>
-
 
                             <Grid size={12} >
                                 <Stack color={'rgba(255, 255, 255, 1)'} className="labelForm">
@@ -134,8 +127,6 @@ const RecoveryPasswordPage = () => {
 
                             </Grid>
 
-
-
                             <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
                                 <DefaultaButton
                                     onClick={handleRecover}
@@ -143,17 +134,12 @@ const RecoveryPasswordPage = () => {
                                     widthButton='380px'
                                 />
                             </Grid>
-
-
-                                </Grid>
-
-
+                        </Grid>
                     </Grid>
-                    <Grid size={{ xs: 0, md: 4, lg: 4 }} className='medicoImagem'>
 
-                    </Grid>
+                    <Grid size={{ xs: 0, md: 4, lg: 4 }} className='medicoImagem' />
+
                 </Grid>
-                <ToastContainer />
             </Box >
 
             {loading && (
