@@ -1,4 +1,5 @@
-
+// src/app/reset-password/page.jsx
+// Remova o 'use client' daqui
 import { Suspense } from 'react';
 import ResetPasswordForm from './ResetPasswordForm';
 import Loading from '../Commons/Component/Loading/loading';
