@@ -4,7 +4,7 @@ import '@/app/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { useState } from "react"
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { useRouter } from "next/navigation"
 import { Box, TextField, Grid, Stack } from "@mui/material"
 
@@ -21,6 +21,12 @@ const RecoveryPasswordPage = () => {
     const handleRecover = async () => {
         setLoading(true)
 
+        if (!email) {
+            setLoading(false)
+            toast.error('Favor inserir email para envio de recuperação de senha!')
+            return
+        }
+
         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
         try {
@@ -30,7 +36,7 @@ const RecoveryPasswordPage = () => {
                 body: JSON.stringify({ email })
             });
 
-           
+
 
             if (res.ok) {
                 toast.success('E-mail de recuperação de senha enviado!')
@@ -140,6 +146,7 @@ const RecoveryPasswordPage = () => {
                     <Grid size={{ xs: 0, md: 4, lg: 4 }} className='medicoImagem' />
 
                 </Grid>
+                <ToastContainer />
             </Box >
 
             {loading && (
