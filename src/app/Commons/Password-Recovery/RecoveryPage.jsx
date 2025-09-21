@@ -30,7 +30,7 @@ const RecoveryPasswordPage = () => {
                 body: JSON.stringify({ email })
             });
 
-            const data = await res.text();
+           
 
             if (res.ok) {
                 toast.success('E-mail de recuperação de senha enviado!')

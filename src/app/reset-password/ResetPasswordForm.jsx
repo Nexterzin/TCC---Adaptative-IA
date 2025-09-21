@@ -45,7 +45,7 @@ const ResetPasswordForm = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }
 
     return (
         <>
