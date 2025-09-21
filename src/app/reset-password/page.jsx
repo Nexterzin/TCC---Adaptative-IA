@@ -1,5 +1,7 @@
 'use client'
 
+import ResetPasswordForm from "./ResetPasswordForm"
+
 const ResetPasswordPage = () => {
   return (
     <ResetPasswordForm />
