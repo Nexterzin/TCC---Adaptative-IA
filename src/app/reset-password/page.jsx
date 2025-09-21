@@ -1,14 +1,16 @@
 'use client'
 
-import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 
-import ResetPasswordForm from './ResetPasswordForm';
-import Loading from '../Commons/Component/Loading/loading'; 
+const ResetPasswordForm = dynamic(() => import('./ResetPasswordForm'), {
+  ssr: false, // Isso desativa a renderização no servidor para este componente
+  loading: () => <Loading />, // Você pode usar seu componente de loading aqui
+});
 
-export default function ResetPasswordPage() {
+const ResetPasswordPage = () => {
   return (
-    <Suspense fallback={<Loading />}>
-      <ResetPasswordForm />
-    </Suspense>
-  );
+    <ResetPasswordForm />
+  )
 }
+
+export default ResetPasswordPage
