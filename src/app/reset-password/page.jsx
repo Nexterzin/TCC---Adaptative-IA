@@ -1,15 +1,14 @@
-// src/app/reset-password/page.jsx
-// Remova o 'use client' daqui
-import { Suspense } from 'react';
-import ResetPasswordForm from './ResetPasswordForm';
-import Loading from '../Commons/Component/Loading/loading';
+'use client'
 
-const ResetPasswordPage = () => {
+import { Suspense } from 'react';
+
+import ResetPasswordForm from './ResetPasswordForm';
+import Loading from '../Commons/Component/Loading/loading'; 
+
+export default function ResetPasswordPage() {
   return (
     <Suspense fallback={<Loading />}>
       <ResetPasswordForm />
     </Suspense>
   );
-};
-
-export default ResetPasswordPage;
+}
