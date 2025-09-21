@@ -1,10 +1,11 @@
 'use client'
 
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
+import Loading from '../Commons/Component/Loading/loading'
 
 const ResetPasswordForm = dynamic(() => import('./ResetPasswordForm'), {
-  ssr: false, // Isso desativa a renderização no servidor para este componente
-  loading: () => <Loading />, // Você pode usar seu componente de loading aqui
+  ssr: false, 
+  loading: () => <Loading />, 
 });
 
 const ResetPasswordPage = () => {
