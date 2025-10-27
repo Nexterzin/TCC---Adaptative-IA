@@ -1,82 +1,81 @@
 'use client'
 
-import '@/app/globals.css'
-import DefaultaButton from '../Component/ComponentButton/DefaultButton'
-
-import { useRef, useState } from 'react';
+import { toast } from 'react-toastify'
+import { useRef, useState } from 'react'
 import { Box, Stack, Typography, CircularProgress } from "@mui/material"
 
+import '@/app/globals.css'
+import * as pdfjsLib from "pdfjs-dist"
 
-const mockPredictionData = [
-    {
-        prediction: 'Diabetes Tipo 1',
-        predictionDesc: 'Diabetes autoimune que destrói as células produtoras de insulina. Mais comum em jovens. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-    {
-        prediction: 'Diabetes Tipo 2',
-        predictionDesc: 'Mais comum em adultos, associada à resistência à insulina e obesidade. Mas lembre-se de levar em consideração as informações do seu médico.'
-    },
-];
+import DefaultaButton from '../Component/ComponentButton/DefaultButton'
+
+// Configura o worker do pdf.js direto pela CDN (garante que o build do Next.js funcione)
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
 
 const HomePage = () => {
-    const [currentResult, setCurrentResult] = useState(null);
-    const [loading, setLoading] = useState(false);
     const inputFileRef = useRef(null);
 
-    const randomTest = () => {
-        const randomIndex = Math.floor(Math.random() * mockPredictionData.length);
-        setCurrentResult(mockPredictionData[randomIndex]);
-    };
-
-    const donwload = () => {
-        if (!currentResult) return;
-
-        const fileName = getPdfFilename(currentResult.prediction);
-        const fileUrl = `/pdfs/${fileName}`;
-
-        const link = document.createElement('a');
-        link.href = fileUrl;
-        link.download = fileName;
-        link.click();
-    };
-
-    const getPdfFilename = (prediction) => {
-        switch (prediction) {
-            case 'Diabetes Tipo 1': return 'tipo_1.pdf';
-            case 'Diabetes Tipo 2': return 'tipo_2.pdf';
-            // ... Adicionar outros casos futuramente, verificar IA
-            default: return '';
-        }
-    };
+    const [loading, setLoading] = useState(false);
+    const [hasDiabete, setHasDiabete] = useState(null);
+    const [probabilities, setProbabilities] = useState(null);
 
     const handleButtonClick = () => {
         inputFileRef.current?.click();
     };
 
-    const handleFileChange = (e) => {
+    const handleFileChange = async (e) => {
         const file = e.target.files[0];
-        if (file) {
-            setLoading(true);
-            setCurrentResult(null);
+        if (!file) return;
 
-            setTimeout(() => {
-                const fileName = file.name.toLowerCase();
+        setLoading(true);
+        setHasDiabete(null);
+        setProbabilities(null);
 
-                let prediction;
-                if (fileName.includes('tipo_1')) {
-                    prediction = mockPredictionData.find(item => item.prediction === 'Diabetes Tipo 1');
-                } else if (fileName.includes('tipo_2')) {
-                    prediction = mockPredictionData.find(item => item.prediction === 'Diabetes Tipo 2');
-                } else {
-                    prediction = {
-                        prediction: 'Nenhum sinal de diabetes identificado',
-                        predictionDesc: 'Com base no arquivo enviado, não foi possível identificar sinais claros de diabetes.'
-                    };
-                }
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
 
-                setCurrentResult(prediction);
-                setLoading(false);
-            }, 2000);
+        const extractTextFromPDF = async (file) => {
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            let textContent = "";
+
+            for (let i = 0; i < pdf.numPages; i++) {
+                const page = await pdf.getPage(i + 1);
+                const text = await page.getTextContent();
+                text.items.forEach(item => textContent += item.str + " ");
+            }
+
+            return textContent.toLowerCase();
+        };
+
+        const text = await extractTextFromPDF(file);
+
+        const gravidez = parseInt(text.match(/gravidez\s*[:\-]?\s*(\d+)/)?.[1] || 0);
+        const glicose = parseFloat(text.match(/glicose\s*[:\-]?\s*(\d+(\.\d+)?)/)?.[1] || 0);
+        const imc = parseFloat(text.match(/imc\s*[:\-]?\s*(\d+(\.\d+)?)/)?.[1] || 0);
+        const idade = parseInt(text.match(/idade\s*[:\-]?\s*(\d+)/)?.[1] || 0);
+
+        try {
+            const response = await fetch("iapythontcc-production.up.railway.app", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ gravidez, glicose, imc, idade }),
+            });
+
+            if (!response.ok) { 
+                throw new Error(`Erro da API: ${response.statusText}`);
+            }
+
+            const result = await response.json();
+
+            setHasDiabete(result.classe);
+            setProbabilities((result.probabilidade * 100).toFixed(1));
+
+        } catch (error) {
+            console.error("Erro ao enviar para API:", error);
+            toast.error("Erro ao processar o PDF. Verifique o arquivo e tente novamente.");
+        } finally {
+            setLoading(false);
+            e.target.value = null;
         }
     };
 
@@ -93,8 +92,7 @@ const HomePage = () => {
                 <Stack className='spin-wrapper'>
                     <Stack className="box-1">
                         <Stack className="spinner">
-                            <Stack className="spinner1">
-                            </Stack>
+                            <Stack className="spinner1"></Stack>
                         </Stack>
                     </Stack>
                 </Stack>
@@ -107,7 +105,7 @@ const HomePage = () => {
                             fontSize: 32,
                             textAlign: 'center'
                         }}>
-                        {currentResult ? 'Seus resultados mostraram que você está com' : ''}
+                        {hasDiabete === 1 ? 'Seus resultados mostraram que você está com' : hasDiabete === 0 ? 'Seus resultados mostraram que você está' : ''}
                     </Typography>
 
                     <Stack>
@@ -123,24 +121,26 @@ const HomePage = () => {
                                 textShadow: '2px 2px 8px rgba(0,0,0,0.2)',
                             }}
                         >
-                            {currentResult?.prediction}
+                            {hasDiabete !== null && (
+                                hasDiabete === 1 ? (
+                                    'Diabetes' 
+                                ) : (
+                                    'Sem diabetes'
+                                )
+                            )}
                         </Typography>
                     </Stack>
                 </Stack>
 
                 <Stack>
                     <Typography sx={{ color: '#333', fontSize: 20, px: 5, textAlign: 'center' }}>
-                        {currentResult?.predictionDesc?.split('Mas lembre-se')[0]}
+                        {hasDiabete === 1 ? `A análise indicou uma probabilidade de ${probabilities}% de diabetes.` :
+                            hasDiabete === 0 ? `A análise indicou uma baixa probabilidade de diabetes.` :
+                                '' }
                     </Typography>
 
                     {loading && (
-                        <Stack
-                            sx={{
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                mt: 5,
-                            }}
-                        >
+                        <Stack sx={{ justifyContent: 'center', alignItems: 'center', mt: 5 }}>
                             <CircularProgress />
                             <Typography sx={{ mt: 2, fontWeight: 'bold', color: '#2a9df4' }}>
                                 Processando seu laudo...
@@ -148,7 +148,7 @@ const HomePage = () => {
                         </Stack>
                     )}
 
-                    {currentResult && !loading && (
+                    {hasDiabete !== null && !loading && (
                         <Stack>
                             <Typography
                                 sx={{
@@ -162,38 +162,13 @@ const HomePage = () => {
                                 }}
                             >
                                 Mas lembre-se de levar em consideração as informações do seu médico.
-                                {"\n"}Para resultados mais detalhados baixe nosso pdf
                             </Typography>
-
-                            <Stack sx={{ justifyContent: 'center', alignItems: 'center', mt: '30px' }}>
-                                <DefaultaButton
-                                    height={45}
-                                    onClick={donwload}
-                                    content={'Baixar arquivo'}
-                                    widthButton="300px"
-                                    hoverBackgroundColor=' rgba(109, 189, 235, 1)'
-                                />
-                            </Stack>
                         </Stack>
                     )}
                 </Stack>
 
-                {!currentResult && !loading && (
-                    <Stack
-                        sx={{
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: 2,
-                        }}
-                    >
-                        {/* <Stack>
-                            <DefaultButton
-                                height={35}
-                                onClick={randomTest}
-                                content={<SendIcon sx={{ transform: 'rotate(-20deg)', mt: -0.5 }} />}
-                            />
-                        </Stack> */}
-
+                {hasDiabete === null && !loading && (
+                    <Stack sx={{ alignItems: 'center', justifyContent: 'center', gap: 2 }}>
                         <DefaultaButton
                             content="Enviar arquivo (PDF, JPG, PNG)"
                             onClick={handleButtonClick}
@@ -213,13 +188,18 @@ const HomePage = () => {
                             style={{ display: 'none' }}
                         />
 
-                        <Typography sx={{ color: 'rgba(83, 182, 239, 1)', fontWeight: 'bold', textAlign: 'center', whiteSpace: 'pre-line' }}>
+                        <Typography sx={{
+                            color: 'rgba(83, 182, 239, 1)',
+                            fontWeight: 'bold',
+                            textAlign: 'center',
+                            whiteSpace: 'pre-line'
+                        }}>
                             Envie seu laudo médico para análise. {"\n"}A IA irá interpretar os dados futuramente.
                         </Typography>
                     </Stack>
                 )}
             </Stack>
-        </Box >
+        </Box>
     );
 };
 

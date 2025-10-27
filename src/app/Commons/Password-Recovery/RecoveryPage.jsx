@@ -17,6 +17,7 @@ const RecoveryPasswordPage = () => {
 
     const [email, setEmail] = useState('')
     const [loading, setLoading] = useState(false)
+    const [erro, setErro] = useState(null)
 
     const handleRecover = async () => {
         setLoading(true)
@@ -39,18 +40,20 @@ const RecoveryPasswordPage = () => {
 
 
             if (res.ok) {
-                toast.success('E-mail de recuperação de senha enviado!')
+                toast.success('E-mail de recuperação de senha enviado!');
                 setTimeout(() => {
-                    setLoading(false)
+                    setLoading(false);
                     router.push('/PagesRouter/Login');
                 }, 2000);
             } else {
-                setLoading(false)
-                toast.error('E-mail de recuperação de senha ja enviado ou erro no servidor!')
+                const data = await res.json();
+                setLoading(false);
+                toast.error(data.message || "Ocorreu um erro ao enviar o e-mail.");
+                setErro(data.message); 
             }
         } catch (error) {
-            setLoading(false)
-            toast.error("Erro ao enviar solicitação.");
+            setLoading(false);
+            toast.error(error.message || "Erro ao enviar solicitação.");
         }
     };
 
