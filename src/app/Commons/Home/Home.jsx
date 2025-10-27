@@ -9,8 +9,7 @@ import * as pdfjsLib from "pdfjs-dist"
 
 import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
-// Configura o worker do pdf.js direto pela CDN (garante que o build do Next.js funcione)
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 const HomePage = () => {
     const inputFileRef = useRef(null);
@@ -30,8 +29,6 @@ const HomePage = () => {
         setLoading(true);
         setHasDiabete(null);
         setProbabilities(null);
-
-        pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
 
         const extractTextFromPDF = async (file) => {
             const arrayBuffer = await file.arrayBuffer();
@@ -55,7 +52,7 @@ const HomePage = () => {
         const idade = parseInt(text.match(/idade\s*[:\-]?\s*(\d+)/)?.[1] || 0);
 
         try {
-            const response = await fetch("iapythontcc-production.up.railway.app", {
+            const response = await fetch("https://iapythontcc-production.up.railway.app/predict", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ gravidez, glicose, imc, idade }),
