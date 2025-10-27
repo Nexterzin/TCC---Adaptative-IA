@@ -9,7 +9,7 @@ import * as pdfjsLib from "pdfjs-dist"
 
 import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
 
 const HomePage = () => {
     const inputFileRef = useRef(null);
