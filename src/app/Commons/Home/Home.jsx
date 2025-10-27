@@ -6,13 +6,10 @@ import { Box, Stack, Typography, CircularProgress } from "@mui/material"
 
 import '@/app/globals.css'
 import * as pdfjsLib from "pdfjs-dist"
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker.mjs"
+
 import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
-
-pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(
-    new Blob([`importScripts('${pdfjsWorker}')`], { type: "application/javascript" })
-);
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
 
 const HomePage = () => {
     const inputFileRef = useRef(null);
