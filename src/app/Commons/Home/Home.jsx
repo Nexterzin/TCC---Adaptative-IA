@@ -21,6 +21,31 @@ const HomePage = () => {
         inputFileRef.current?.click();
     };
 
+    const handleDownloadFile = () => {
+        if (hasDiabete === null || probabilities === null) {
+            toast.info("Por favor, analise um laudo antes de baixar o arquivo.");
+            return;
+        }
+
+        const probNum = parseFloat(probabilities);
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        let fileUrl = '';
+
+        if (hasDiabete === 1 && probNum >= 80.00) {
+            fileUrl = `${apiUrl}/api/documentos/orientacao-alto-risco`;
+        } else if (hasDiabete === 1) {
+            fileUrl = `${apiUrl}/api/documentos/orientacao-medio-risco`;
+        } else if (hasDiabete === 0) {
+            fileUrl = `${apiUrl}/api/documentos/orientacao-prevencao`;
+        }
+
+        if (fileUrl) {
+            window.open(fileUrl, '_blank');
+        } else {
+            toast.error("Não foi possível determinar o documento de orientação.");
+        }
+    };
+
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -30,14 +55,14 @@ const HomePage = () => {
         setProbabilities(null);
 
         const formData = new FormData();
-        formData.append("arquivo", file); 
+        formData.append("arquivo", file);
 
         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
         try {
-            const response = await fetch(`${apiUrl}/api/usuarios/analisar-laudo`, { 
+            const response = await fetch(`${apiUrl}/api/usuarios/analisar-laudo`, {
                 method: "POST",
-                body: formData, 
+                body: formData,
             });
 
             if (!response.ok) {
@@ -45,7 +70,7 @@ const HomePage = () => {
                 throw new Error(`Erro do servidor: ${errorData.message || response.statusText}`);
             }
 
-            const result = await response.json(); 
+            const result = await response.json();
 
             setHasDiabete(result.classe);
             setProbabilities((result.probabilidade * 100).toFixed(1));
@@ -77,7 +102,7 @@ const HomePage = () => {
                     </Stack>
                 </Stack>
 
-                <Stack sx={{ mb: 30 }}>
+                <Stack sx={{ mb: 35 }}>
                     <Typography
                         sx={{
                             color: 'rgba(83, 182, 239, 1)',
@@ -89,38 +114,46 @@ const HomePage = () => {
                     </Typography>
 
                     <Stack>
-                        <Typography
-                            sx={{
-                                p: 7,
-                                fontSize: 38,
-                                color: '#2a9df4',
-                                fontWeight: '900',
-                                textAlign: 'center',
-                                letterSpacing: '1.5px',
-                                textTransform: 'uppercase',
-                                textShadow: '2px 2px 8px rgba(0,0,0,0.2)',
-                            }}
-                        >
-                            {hasDiabete !== null && (
-                                hasDiabete === 1 ? (
-                                    'Diabetes'
-                                ) : (
-                                    'Sem diabetes'
-                                )
-                            )}
-                        </Typography>
+                        <Stack mt={-5}>
+                            <Typography
+                                sx={{
+                                    p: 7,
+                                    fontSize: 38,
+                                    color: '#2a9df4',
+                                    fontWeight: '900',
+                                    textAlign: 'center',
+                                    letterSpacing: '1.5px',
+                                    textTransform: 'uppercase',
+                                    textShadow: '2px 2px 8px rgba(0,0,0,0.2)',
+                                }}
+                            >
+                                {hasDiabete !== null && (
+                                    hasDiabete === 1 ? (
+                                        'Diabetes'
+                                    ) : (
+                                        'Sem diabetes'
+                                    )
+                                )}
+                            </Typography>
+                        </Stack>
                     </Stack>
                 </Stack>
 
                 <Stack>
-                    <Typography sx={{ color: '#333', fontSize: 20, px: 5, textAlign: 'center' }}>
-                        {hasDiabete === 1 ? `A análise indicou uma probabilidade de ${probabilities}% de diabetes.` :
-                            hasDiabete === 0 ? `A análise indicou uma baixa probabilidade de diabetes.` :
-                                ''}
-                    </Typography>
+                    <Stack mt={-13}>
+                        <Typography sx={{ color: '#333', fontSize: 20, textAlign: 'center' }}>
+                            {hasDiabete === 1 && parseFloat(probabilities) >= 80.00 ?
+                                `A análise indicou um ALTO RISCO com probabilidade de ${probabilities}% de diabetes.` :
+                                hasDiabete === 1 ?
+                                    `A análise indicou uma probabilidade de ${probabilities}% de diabetes.` :
+                                    hasDiabete === 0 ?
+                                        `A análise indicou uma baixa probabilidade de diabetes com ${probabilities}% de diabetes.` : ''
+                            }
+                        </Typography>
+                    </Stack>
 
                     {loading && (
-                        <Stack sx={{ justifyContent: 'center', alignItems: 'center', mt: 5 }}>
+                        <Stack sx={{ justifyContent: 'center', alignItems: 'center', mt: 15 }}>
                             <CircularProgress />
                             <Typography sx={{ mt: 2, fontWeight: 'bold', color: '#2a9df4' }}>
                                 Processando seu laudo...
@@ -130,19 +163,24 @@ const HomePage = () => {
 
                     {hasDiabete !== null && !loading && (
                         <Stack>
-                            <Typography
-                                sx={{
-                                    color: '#555',
-                                    fontSize: 16,
-                                    fontStyle: 'italic',
-                                    px: 5,
-                                    pt: 1,
-                                    textAlign: 'center',
-                                    whiteSpace: 'pre-line',
-                                }}
-                            >
-                                Mas lembre-se de levar em consideração as informações do seu médico.
-                            </Typography>
+                            <Stack>
+                                <Typography
+                                    sx={{
+                                        color: '#555',
+                                        fontSize: 16,
+                                        fontStyle: 'italic',
+                                        px: 5,
+                                        pt: 1,
+                                        textAlign: 'center',
+                                        whiteSpace: 'pre-line',
+                                    }}
+                                >
+                                    Mas lembre-se de levar em consideração as informações do seu médico.
+                                </Typography>
+                            </Stack>
+                            <Stack justifyContent={'center'} alignItems={'center'} mt={2}>
+                                <DefaultaButton content={'Baixar arquivo'} onClick={handleDownloadFile} />
+                            </Stack>
                         </Stack>
                     )}
                 </Stack>
@@ -150,7 +188,7 @@ const HomePage = () => {
                 {hasDiabete === null && !loading && (
                     <Stack sx={{ alignItems: 'center', justifyContent: 'center', gap: 2 }}>
                         <DefaultaButton
-                            content="Enviar arquivo (PDF, JPG, PNG)"
+                            content="Enviar arquivo (PDF)"
                             onClick={handleButtonClick}
                             height={45}
                             widthButton="300px"
@@ -163,7 +201,7 @@ const HomePage = () => {
                             ref={inputFileRef}
                             id="fileUpload"
                             type="file"
-                            accept=".pdf,.jpg,.jpeg,.png"
+                            accept=".pdf"
                             onChange={handleFileChange}
                             style={{ display: 'none' }}
                         />
