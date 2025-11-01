@@ -6,7 +6,6 @@ import { Box, Stack, Typography, CircularProgress } from "@mui/material"
 
 import '@/app/globals.css'
 import * as pdfjsLib from "pdfjs-dist"
-
 import DefaultaButton from '../Component/ComponentButton/DefaultButton'
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.mjs`;
@@ -30,46 +29,30 @@ const HomePage = () => {
         setHasDiabete(null);
         setProbabilities(null);
 
-        const extractTextFromPDF = async (file) => {
-            const arrayBuffer = await file.arrayBuffer();
-            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-            let textContent = "";
+        const formData = new FormData();
+        formData.append("arquivo", file); 
 
-            for (let i = 0; i < pdf.numPages; i++) {
-                const page = await pdf.getPage(i + 1);
-                const text = await page.getTextContent();
-                text.items.forEach(item => textContent += item.str + " ");
-            }
-
-            return textContent.toLowerCase();
-        };
-
-        const text = await extractTextFromPDF(file);
-
-        const gravidez = parseInt(text.match(/gravidez\s*[:\-]?\s*(\d+)/)?.[1] || 0);
-        const glicose = parseFloat(text.match(/glicose\s*[:\-]?\s*(\d+(\.\d+)?)/)?.[1] || 0);
-        const imc = parseFloat(text.match(/imc\s*[:\-]?\s*(\d+(\.\d+)?)/)?.[1] || 0);
-        const idade = parseInt(text.match(/idade\s*[:\-]?\s*(\d+)/)?.[1] || 0);
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
         try {
-            const response = await fetch("https://iapythontcc-production.up.railway.app/predict", {
+            const response = await fetch(`${apiUrl}/api/usuarios/analisar-laudo`, { 
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ gravidez, glicose, imc, idade }),
+                body: formData, 
             });
 
-            if (!response.ok) { 
-                throw new Error(`Erro da API: ${response.statusText}`);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`Erro do servidor: ${errorData.message || response.statusText}`);
             }
 
-            const result = await response.json();
+            const result = await response.json(); 
 
             setHasDiabete(result.classe);
             setProbabilities((result.probabilidade * 100).toFixed(1));
 
         } catch (error) {
             console.error("Erro ao enviar para API:", error);
-            toast.error("Erro ao processar o PDF. Verifique o arquivo e tente novamente.");
+            toast.error(`Erro ao processar o laudo. ${error.message || 'Verifique o arquivo e tente novamente.'}`);
         } finally {
             setLoading(false);
             e.target.value = null;
@@ -120,7 +103,7 @@ const HomePage = () => {
                         >
                             {hasDiabete !== null && (
                                 hasDiabete === 1 ? (
-                                    'Diabetes' 
+                                    'Diabetes'
                                 ) : (
                                     'Sem diabetes'
                                 )
@@ -133,7 +116,7 @@ const HomePage = () => {
                     <Typography sx={{ color: '#333', fontSize: 20, px: 5, textAlign: 'center' }}>
                         {hasDiabete === 1 ? `A análise indicou uma probabilidade de ${probabilities}% de diabetes.` :
                             hasDiabete === 0 ? `A análise indicou uma baixa probabilidade de diabetes.` :
-                                '' }
+                                ''}
                     </Typography>
 
                     {loading && (
