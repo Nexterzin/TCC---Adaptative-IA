@@ -65,12 +65,15 @@ const HomePage = () => {
                 body: formData,
             });
 
+
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(`Erro do servidor: ${errorData.message || response.statusText}`);
             }
 
             const result = await response.json();
+
+            console.log('response', response)
 
             setHasDiabete(result.classe);
             setProbabilities((result.probabilidade * 100).toFixed(1));
@@ -178,9 +181,9 @@ const HomePage = () => {
                                     Mas lembre-se de levar em consideração as informações do seu médico.
                                 </Typography>
                             </Stack>
-                            <Stack justifyContent={'center'} alignItems={'center'} mt={2}>
-                                <DefaultaButton content={'Baixar arquivo'} onClick={handleDownloadFile} />
-                            </Stack>
+                            {/* <Stack justifyContent={'center'} alignItems={'center'} mt={2}> */}
+                            {/* <DefaultaButton content={'Baixar arquivo'} onClick={handleDownloadFile} /> */}
+                            {/* </Stack> */}
                         </Stack>
                     )}
                 </Stack>
