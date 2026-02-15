@@ -21,28 +21,12 @@ const HomePage = () => {
         inputFileRef.current?.click();
     };
 
-    const handleDownloadFile = () => {
-        if (hasDiabete === null || probabilities === null) {
-            toast.info("Por favor, analise um laudo antes de baixar o arquivo.");
-            return;
-        }
-
-        const probNum = parseFloat(probabilities);
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-        let fileUrl = '';
-
-        if (hasDiabete === 1 && probNum >= 80.00) {
-            fileUrl = `${apiUrl}/api/documentos/orientacao-alto-risco`;
-        } else if (hasDiabete === 1) {
-            fileUrl = `${apiUrl}/api/documentos/orientacao-medio-risco`;
-        } else if (hasDiabete === 0) {
-            fileUrl = `${apiUrl}/api/documentos/orientacao-prevencao`;
-        }
-
-        if (fileUrl) {
-            window.open(fileUrl, '_blank');
-        } else {
-            toast.error("Não foi possível determinar o documento de orientação.");
+    const handleReset = () => {
+        setHasDiabete(null);
+        setProbabilities(null);
+        setLoading(false);
+        if (inputFileRef.current) {
+            inputFileRef.current.value = ""; 
         }
     };
 
@@ -178,9 +162,19 @@ const HomePage = () => {
                                     Mas lembre-se de levar em consideração as informações do seu médico.
                                 </Typography>
                             </Stack>
-                            <Stack justifyContent={'center'} alignItems={'center'} mt={2}>
-                                <DefaultaButton content={'Baixar arquivo'} onClick={handleDownloadFile} />
+                            
+                            <Stack justifyContent={'center'} alignItems={'center'} mt={4}>
+                                <DefaultaButton 
+                                    content={'Analisar outro arquivo'} 
+                                    onClick={handleReset} 
+                                    height={45}
+                                    widthButton="250px"
+                                    backgroundColor="#2a9df4"
+                                    colorText="#fff"
+                                    hoverBackgroundColor="rgba(42, 157, 244, 0.8)"
+                                />
                             </Stack>
+
                         </Stack>
                     )}
                 </Stack>
