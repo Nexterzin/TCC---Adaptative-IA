@@ -30,31 +30,6 @@ const HomePage = () => {
         }
     };
 
-    // const handleDownloadFile = () => {
-    //     if (hasDiabete === null || probabilities === null) {
-    //         toast.info("Por favor, analise um laudo antes de baixar o arquivo.");
-    //         return;
-    //     }
-
-    //     const probNum = parseFloat(probabilities);
-    //     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    //     let fileUrl = '';
-
-    //     if (hasDiabete === 1 && probNum >= 80.00) {
-    //         fileUrl = `${apiUrl}/api/documentos/orientacao-alto-risco`;
-    //     } else if (hasDiabete === 1) {
-    //         fileUrl = `${apiUrl}/api/documentos/orientacao-medio-risco`;
-    //     } else if (hasDiabete === 0) {
-    //         fileUrl = `${apiUrl}/api/documentos/orientacao-prevencao`;
-    //     }
-
-    //     if (fileUrl) {
-    //         window.open(fileUrl, '_blank');
-    //     } else {
-    //         toast.error("Não foi possível determinar o documento de orientação.");
-    //     }
-    // };
-
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
